@@ -129,12 +129,12 @@ function StatCard({ label, sub, index }: { label: string, sub: string, index: nu
 
 export default function Hero() {
   const bulletPoints = [
-    { label: '35+', sub: 'Year Forensic Accounting Practice' },
-    { label: '500+', sub: 'Forensic Accounting Cases' },
-    { label: '20', sub: 'Authored Research Publications' },
-    { label: '6', sub: 'Professional Certifications' },
-    { label: 'Big 4', sub: 'Forensic Experience' },
-    { label: '$2.3 Billion', sub: 'Total Verdict Value' }
+    { text: '30+ Year Forensic Accounting Practice' },
+    { text: '500+ Forensic Accounting ', highlight: 'Cases' },
+    { text: '20 Authored Research Publications' },
+    { text: '6 Professional Certifications' },
+    { text: 'Big 4 Forensic Experience' },
+    { text: '$2.3 Billion Jury Award', isGold: true }
   ]
 
   const titleVariants = {
@@ -199,7 +199,7 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               transition={{ staggerChildren: 0.03, delayChildren: 0.8 }}
-              className="flex items-center justify-center space-x-6 mb-16 max-w-2xl mx-auto"
+              className="flex items-center justify-center space-x-6 mb-10 max-w-2xl mx-auto"
             >
               <motion.div
                 initial={{ scaleX: 0 }}
@@ -223,16 +223,69 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6 mb-20">
-            {bulletPoints.map((point, index) => (
-              <StatCard
-                key={index}
-                index={index}
-                label={point.label}
-                sub={point.sub}
-              />
-            ))}
+          {/* Premium Institutional List */}
+          <div className="flex justify-center mb-16 px-4">
+            <motion.ul
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 1.0,
+                    delayChildren: 2.2
+                  }
+                }
+              }}
+              className="space-y-1 md:space-y-2 text-left inline-block"
+            >
+              {bulletPoints.map((point, index) => (
+                <motion.li
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, y: 200 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.8,
+                        ease: [0.22, 1, 0.36, 1]
+                      }
+                    }
+                  }}
+                  whileHover={{ x: 15 }}
+                  className={`flex items-start md:items-center text-base md:text-lg lg:text-xl font-bold tracking-tight transition-all duration-500 group/item cursor-default ${point.isGold ? 'text-[#D4AF37]' : 'text-white'}`}
+                >
+                  <motion.span
+                    variants={{
+                      hidden: { scale: 0 },
+                      visible: { scale: 1, transition: { type: 'spring', stiffness: 200 } }
+                    }}
+                    className={`mt-2 md:mt-0 w-2 h-2 md:w-3 md:h-3 rounded-full mr-8 shrink-0 transition-all duration-500 group-hover/item:scale-150 ${point.isGold ? 'bg-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.6)]' : 'bg-white shadow-[0_0_15px_rgba(255,255,255,0.6)]'}`}
+                  />
+                  <div className="relative overflow-hidden flex items-center flex-wrap drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]">
+                    <span className="relative group-hover/item:text-[#D4AF37] transition-colors duration-500 py-1">
+                      {point.text}
+                      {point.highlight && (
+                        <span className="relative inline-block text-[#D4AF37]">
+                          {point.highlight}
+                          <motion.span
+                            variants={{
+                              hidden: { width: 0 },
+                              visible: {
+                                width: '100%',
+                                transition: { delay: 0.5, duration: 0.8 }
+                              }
+                            }}
+                            className="absolute -bottom-1 left-0 h-[3px] bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.4)]"
+                          />
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                </motion.li>
+              ))}
+            </motion.ul>
           </div>
 
         </div>

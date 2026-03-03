@@ -40,18 +40,18 @@ export default function ServicesOverview() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight tracking-tighter">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-2 leading-tight tracking-tighter">
                 Our Services
               </h2>
-              <div className="h-1 w-20 bg-[#D4AF37] mb-6 mx-auto" />
+              <div className="h-1.5 w-72 md:w-[500px] bg-[#D4AF37] mb-8 mx-auto shadow-[0_0_20px_rgba(212,175,55,0.3)]" />
             </motion.div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:[grid-template-columns:repeat(2,minmax(0,280px))] lg:[grid-template-columns:repeat(4,minmax(0,280px))] gap-2 justify-center">
           {services.map((service, index) => (
-            <Link key={index} href={service.href} className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl bg-gradient-to-br from-blue-950 via-blue-800 to-blue-600 border border-blue-300/20">
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-950/70 via-blue-900/30 to-transparent group-hover:from-[#D4AF37]/20 transition-all duration-700" />
+            <Link key={index} href={service.href} className="group relative w-full max-w-[280px] overflow-hidden rounded-2xl bg-[#172554] border-[#4cc9f0]/40 transition-all duration-500" style={{ borderWidth: '0.5px' }}>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[#1e3a8a]/40 transition-all duration-700" />
 
               {/* Content Box */}
               <div className="relative p-5 md:p-6 z-10 text-center">

@@ -92,7 +92,7 @@ const publicationCategories = [
 
 const stats = [
   { value: '20+', label: 'Research Publications' },
-  { value: '35+', label: 'Years of Research' },
+  { value: '30+', label: 'Years of Research' },
   { value: '100+', label: 'Court Applications' },
 ];
 

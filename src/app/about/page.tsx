@@ -12,7 +12,7 @@ import Footer from '@/components/layout/Footer';
 // ─────────────────────────────────────────────
 
 const stats = [
-  { value: '35+', label: 'Years Experience' },
+  { value: '30+', label: 'Years Experience' },
   { value: '500+', label: 'Forensic Cases' },
   { value: '100+', label: 'Trial Testimonies' },
   { value: '$2.3B', label: 'Record Jury Award' },

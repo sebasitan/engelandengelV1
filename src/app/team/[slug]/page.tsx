@@ -150,7 +150,7 @@ const teamMembers: TeamMember[] = [
   {
     slug: 'brandon-j-engel',
     name: 'Brandon J. Engel',
-    credentials: 'CPA, CFE',
+    credentials: 'CPA, CFE, ABV',
     title: 'Partner & Forensic Accountant',
     experience: '10+ Years',
     phone: '(310) 277-2220',
@@ -163,6 +163,7 @@ const teamMembers: TeamMember[] = [
     credentialChips: [
       'Certified Public Accountant',
       'Certified Fraud Examiner',
+      'Accredited in Business Valuation',
     ],
     stats: [
       { value: '200+', label: 'Forensic Accounting Cases' },
@@ -174,8 +175,8 @@ const teamMembers: TeamMember[] = [
         id: 'overview',
         title: 'Overview',
         paragraphs: [
-          'Brandon J. Engel, CPA, CFE is a forensic accountant with over 10 years of experience in over 200 forensic accounting cases and has testified as an expert witness in deposition and trial. Brandon’s forensic experience includes conducting financial investigations in connection with civil and criminal matters. Brandon has provided the following forensic accounting services to top law firms, private and public companies, non-profits, government agencies, and local police departments:',
-          'Brandon’s experience and expertise is highlighted in his skills and ability to investigate financial records and uncover discrepancies, hidden transactions, misstatements, fraud, and misappropriations. As a Certified Fraud Examiner (CFE), Brandon possesses specialized knowledge in investigating a variety of complex financial fraud schemes including international money laundering, embezzlement, fraudulent transfers, alter ego, and misappropriation of assets. As a highly skilled forensic investigator, Brandon also has specialized knowledge and experience in tracing funds in accordance with established legal and financial principles.',
+          'Brandon J. Engel, CPA, CFE, ABV is a forensic accountant with over 10 years of experience in over 200 forensic accounting cases and has testified as an expert witness in deposition and trial. Brandon’s forensic experience includes conducting financial investigations in connection with civil and criminal matters. Brandon has provided the following forensic accounting services to top law firms, private and public companies, non-profits, government agencies, and local police departments:',
+          'Brandon’s experience and expertise is highlighted in his skills and ability to investigate financial records and uncover discrepancies, hidden transactions, misstatements, fraud, and misappropriations. As a Certified Fraud Examiner (CFE) and Accredited in Business Valuation (ABV), Brandon possesses specialized knowledge in investigating a variety of complex financial fraud schemes including international money laundering, embezzlement, fraudulent transfers, alter ego, and misappropriation of assets. As a highly skilled forensic investigator, Brandon also has specialized knowledge and experience in tracing funds in accordance with established legal and financial principles.',
         ],
         items: [
           'Fraud Investigations',

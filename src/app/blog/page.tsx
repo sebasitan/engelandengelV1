@@ -373,7 +373,7 @@ export default function BlogPage() {
               </span>
             </h2>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-              Three decades of excellence in forensic accounting with a proven track record of success
+              Leading the industry in forensic accounting with a proven track record of success
             </p>
           </div>
 

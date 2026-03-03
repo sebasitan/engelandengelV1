@@ -60,7 +60,7 @@ const blogPosts = {
       </ul>
 
       <h3>Experience and Track Record</h3>
-      <p>Look for experts with substantial experience in cases similar to yours. A forensic accountant with 30+ years of experience and hundreds of cases under their belt brings invaluable expertise to complex litigation matters.</p>
+      <p>Look for experts with substantial experience in cases similar to yours. A forensic accountant with 35 years of experience and hundreds of cases under their belt brings invaluable expertise to complex litigation matters.</p>
 
       <h2>Key Considerations for Expert Selection</h2>
 
@@ -180,7 +180,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
-  
+
   if (!post) {
     return {
       title: 'Post Not Found | Engel & Engel Blog',
@@ -248,7 +248,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default function BlogPost({ params }: Props) {
   const post = blogPosts[params.slug as keyof typeof blogPosts]
-  
+
   if (!post) {
     notFound()
   }
@@ -301,10 +301,10 @@ export default function BlogPost({ params }: Props) {
           __html: JSON.stringify(structuredData)
         }}
       />
-      
+
       <main>
         <Header />
-        
+
         {/* Hero Banner with Full Image - Extends Behind Header */}
         <section className="relative h-[600px] lg:h-[700px] overflow-hidden">
           <div className="absolute inset-0">

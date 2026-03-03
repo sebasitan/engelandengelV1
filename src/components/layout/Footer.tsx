@@ -34,7 +34,7 @@ const legal = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0f3574] text-white">
+    <footer className="bg-[#0B253E] text-white border-t border-[#4cc9f0]/40">
       {/* Main Footer */}
       <div className="container-custom py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -53,7 +53,7 @@ export default function Footer() {
             </div>
 
             <p className="text-gray-300 mb-6 max-w-md">
-              Los Angeles' premier forensic accounting firm with 35+ years of experience
+              Los Angeles' premier forensic accounting firm with 35 years of experience
               in fraud investigation, expert witness testimony, and business valuation.
             </p>
 
@@ -148,11 +148,11 @@ export default function Footer() {
                 <React.Fragment key={item.name}>
                   <Link
                     href={item.href}
-                    className="hover:text-primary-400 transition-colors duration-200"
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
-                  {index < legal.length - 1 && <span>•</span>}
+                  {index < legal.length - 1 && <span className="text-gray-400">•</span>}
                 </React.Fragment>
               ))}
             </div>
@@ -160,14 +160,6 @@ export default function Footer() {
             <div className="text-sm text-gray-400">
               © {new Date().getFullYear()} Engel & Engel. All rights reserved.
             </div>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-gray-800 text-xs text-gray-500">
-            <p>
-              Professional services provided by licensed CPAs and CFEs.
-              Attorney-client privilege may apply to certain communications.
-              This website does not constitute legal or professional advice.
-            </p>
           </div>
         </div>
       </div>

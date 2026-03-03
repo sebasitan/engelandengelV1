@@ -49,9 +49,10 @@ export default function ExpertiseGrid() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-0 leading-[0.95] tracking-tighter">
+                            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-2 leading-[0.95] tracking-tighter">
                                 Our Areas of Expertise
                             </h2>
+                            <div className="h-1.5 w-72 md:w-[800px] bg-[#D4AF37] mx-auto shadow-[0_0_20px_rgba(212,175,55,0.3)] mt-4" />
                         </motion.div>
                     </div>
                     <div className="w-full max-w-4xl">
@@ -63,7 +64,9 @@ export default function ExpertiseGrid() {
                             className="relative"
                         >
                             <p className="text-base md:text-lg text-white font-light leading-relaxed text-center">
-                                Jason A. Engel, CPA, CFE, CIRA, CVA, MAFF, ABV, has served as a financial and economic expert witness for over 35 years and in over 500 cases.
+                                Jason A. Engel, CPA, CFE, CIRA, CVA, MAFF, ABV,<br />
+                                has served as a financial and economic expert witness<br />
+                                for over 35 years and in over 500 cases.
                             </p>
                         </motion.div>
                     </div>
@@ -77,15 +80,16 @@ export default function ExpertiseGrid() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.03, duration: 0.5 }}
-                                className="relative h-40 md:h-44 p-6 md:p-7 rounded-2xl bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-700 ease-out overflow-hidden hover:shadow-[0_20px_50px_rgba(23,37,84,0.15)] hover:border-primary-900"
+                                className="relative h-40 md:h-44 p-6 md:p-7 rounded-2xl bg-[#172554] border-[#4cc9f0]/30 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-700 ease-out overflow-hidden hover:shadow-[0_20px_50px_rgba(23,37,84,0.15)] hover:border-[#4cc9f0]/60"
+                                style={{ borderWidth: '0.5px' }}
                             >
                                 {/* Spotlight effect on hover */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900 to-blue-800 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#172554] via-[#1e3a8a] to-[#172554] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                                 {/* Content Wrap */}
                                 <div className="relative z-10 h-full flex items-center justify-center text-center">
                                     <div className="w-full">
-                                        <h3 className="text-base md:text-lg font-bold uppercase tracking-wide text-primary-950 group-hover:text-white transition-colors duration-500 leading-[1.25] text-center">
+                                        <h3 className="text-base md:text-lg font-bold uppercase tracking-wide text-white transition-colors duration-500 leading-[1.25] text-center">
                                             {area.title}
                                         </h3>
                                     </div>

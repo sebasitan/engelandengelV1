@@ -40,7 +40,7 @@ const teamMembers = [
   {
     slug: 'brandon-j-engel',
     name: 'Brandon J. Engel',
-    credentials: 'CPA, CFE',
+    credentials: 'CPA, CFE, ABV',
     title: 'Partner & Forensic Accountant',
     experience: '15+ Years',
     specialties: [
@@ -135,7 +135,7 @@ export default function TeamPage() {
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover"
+                        className="object-cover object-top"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f3574] via-transparent to-transparent opacity-60" />

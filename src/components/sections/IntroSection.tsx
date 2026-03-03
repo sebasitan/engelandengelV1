@@ -52,7 +52,7 @@ export default function IntroSection() {
               Engel & Engel – <br />
               <span className="text-primary-900">Los Angeles Forensic Accounting Firm</span>
             </h2>
-            <span className="text-[#D4AF37] font-bold tracking-[0.4em] uppercase text-xs mb-8">From Strategy to Testimony</span>
+            <span className="text-[#D4AF37] font-bold tracking-[0.4em] uppercase text-base md:text-xl">From Strategy to Testimony</span>
 
             <div className="space-y-8 text-gray-700 text-lg leading-relaxed">
               <p>
@@ -60,7 +60,8 @@ export default function IntroSection() {
               </p>
 
               <p>
-                With over 35 years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case. Our qualifications make us the right choice for developing thoughtful strategies, investigating the particulars, and finally, delivering analysis and calculations with sound and persuasive testimony.
+                With over 35 years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case.
+                Our qualifications make us the right choice for developing thoughtful strategies, investigating the particulars, and finally, delivering analysis and calculations with sound and persuasive testimony.
               </p>
 
               <p>
@@ -74,20 +75,20 @@ export default function IntroSection() {
 
         {/* Industry Credentials Logo Bar - Updated with User-Provided Source URLs */}
         <div className="mt-8 pt-10 border-t border-gray-100">
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-            <div className="relative h-12 md:h-16 w-40 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+            <div className="relative h-16 md:h-20 w-48 opacity-80 hover:grayscale transition-all duration-500">
               <Image src="https://engelandengel.com/wp-content/uploads/elementor/thumbs/aicpa-q9lpfz4lfpwk1yewi9wruisxrxfrhika047rthpf6y.jpg" alt="AICPA" fill className="object-contain" />
             </div>
-            <div className="relative h-20 md:h-24 w-32 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="relative h-24 md:h-32 w-40 opacity-80 hover:grayscale transition-all duration-500">
               <Image src="https://engelandengel.com/wp-content/uploads/2023/07/calpa.jpg" alt="CalCPA" fill className="object-contain" />
             </div>
-            <div className="relative h-20 md:h-24 w-32 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="relative h-24 md:h-32 w-40 opacity-80 hover:grayscale transition-all duration-500">
               <Image src="https://engelandengel.com/wp-content/uploads/2023/07/acfe.jpg" alt="ACFE" fill className="object-contain" />
             </div>
-            <div className="relative h-20 md:h-24 w-32 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="relative h-24 md:h-32 w-40 opacity-80 hover:grayscale transition-all duration-500">
               <Image src="https://engelandengel.com/wp-content/uploads/2023/07/aira.jpg" alt="AIRA" fill className="object-contain" />
             </div>
-            <div className="relative h-20 md:h-24 w-40 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="relative h-24 md:h-32 w-48 opacity-80 hover:grayscale transition-all duration-500">
               <Image src="https://engelandengel.com/wp-content/uploads/elementor/thumbs/nacva-q9lpiejl3b881ovxbtp2seqt0rgwdd7bc4vxg83t4a.jpg" alt="NACVA" fill className="object-contain" />
             </div>
           </div>

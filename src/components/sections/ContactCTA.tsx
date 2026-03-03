@@ -46,7 +46,7 @@ export default function ContactCTA() {
                 },
                 {
                   name: 'Brandon J. Engel',
-                  creds: 'CPA, CFE',
+                  creds: 'CPA, CFE, ABV',
                   image: '/images/team/brandon-engel.jpg',
                   address: '350 S Grand Avenue, Suite 3160',
                   city: 'Los Angeles, CA 90071',
@@ -65,7 +65,7 @@ export default function ContactCTA() {
                 >
                   <div className="flex items-start space-x-6">
                     <div className="relative w-16 h-16 overflow-hidden rounded-full border-2 border-[#D4AF37]/20 flex-shrink-0">
-                      <Image src={member.image} alt={member.name} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                      <Image src={member.image} alt={member.name} fill className="object-cover object-top group-hover:scale-110 transition-transform duration-700" />
                     </div>
                     <div className="flex-1">
 
@@ -104,15 +104,15 @@ export default function ContactCTA() {
                 <div className="space-y-6">
                   <div>
                     <label className="block text-[10px] font-bold text-primary-950 uppercase tracking-[0.3em] mb-2">Your Name</label>
-                    <input type="text" placeholder="YOUR NAME*" className="w-full px-4 py-3 bg-gray-50 border-b-2 border-primary-950/10 focus:border-[#D4AF37] outline-none transition-all text-primary-950 font-bold placeholder:text-gray-400" required />
+                    <input type="text" placeholder="YOUR NAME*" className="w-full px-4 py-3 bg-[#f8fbff] border-[#172554]/30 focus:border-[#0B253E] outline-none transition-all text-primary-950 font-bold placeholder:text-gray-400" style={{ borderWidth: '0.1px' }} required />
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-primary-950 uppercase tracking-[0.3em] mb-2">Your Email</label>
-                    <input type="email" placeholder="YOUR EMAIL*" className="w-full px-4 py-3 bg-gray-50 border-b-2 border-primary-950/10 focus:border-[#D4AF37] outline-none transition-all text-primary-950 font-bold placeholder:text-gray-400" required />
+                    <input type="email" placeholder="YOUR EMAIL*" className="w-full px-4 py-3 bg-[#f8fbff] border-[#172554]/30 focus:border-[#0B253E] outline-none transition-all text-primary-950 font-bold placeholder:text-gray-400" style={{ borderWidth: '0.1px' }} required />
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-primary-950 uppercase tracking-[0.3em] mb-2">Your Phone Number</label>
-                    <input type="text" placeholder="YOUR PHONE NUMBER" className="w-full px-4 py-3 bg-gray-50 border-b-2 border-primary-950/10 focus:border-[#D4AF37] outline-none transition-all text-primary-950 font-bold placeholder:text-gray-400" />
+                    <input type="text" placeholder="YOUR PHONE NUMBER" className="w-full px-4 py-3 bg-[#f8fbff] border-[#172554]/30 focus:border-[#0B253E] outline-none transition-all text-primary-950 font-bold placeholder:text-gray-400" style={{ borderWidth: '0.1px' }} />
                   </div>
                 </div>
 
@@ -121,13 +121,14 @@ export default function ContactCTA() {
                   <textarea
                     placeholder="ENTER A BRIEF MESSAGE"
                     rows={6}
-                    className="w-full px-4 py-3 bg-gray-50 border-b-2 border-primary-950/10 focus:border-[#D4AF37] outline-none transition-all text-primary-950 font-bold placeholder:text-gray-400 resize-none h-full min-h-[240px]"
+                    className="w-full px-4 py-3 bg-[#f8fbff] border-[#172554]/30 focus:border-[#0B253E] outline-none transition-all text-primary-950 font-bold placeholder:text-gray-400 resize-none h-full min-h-[240px]"
+                    style={{ borderWidth: '0.1px' }}
                   ></textarea>
                 </div>
 
                 <div className="md:col-span-2">
                   <label className="block text-[10px] font-bold text-primary-950 uppercase tracking-[0.3em] mb-2">Google reCAPTCHA</label>
-                  <div className="w-full h-20 border border-primary-950/20 bg-gray-50 flex items-center justify-center text-sm text-primary-950/70">
+                  <div className="w-full h-20 border-[#172554]/30 bg-[#f8fbff] flex items-center justify-center text-sm text-primary-950/70" style={{ borderWidth: '0.1px' }}>
                     reCAPTCHA widget placeholder
                   </div>
                 </div>

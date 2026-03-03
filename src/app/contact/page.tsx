@@ -234,7 +234,7 @@ export default function ContactPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {/* Name */}
                         <div className="space-y-2 relative group">
-                          <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1 group-focus-within:text-[#D4AF37] transition-colors">Full Name</label>
+                          <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1 transition-colors">Full Name</label>
                           <input
                             type="text"
                             id="name"
@@ -242,13 +242,14 @@ export default function ContactPage() {
                             required
                             value={formData.name}
                             onChange={handleInputChange}
-                            className="w-full bg-slate-50 border-none rounded-xl px-5 py-4 text-slate-900 focus:ring-2 focus:ring-[#D4AF37] transition-all placeholder:text-slate-300"
+                            className="w-full bg-[#f8fbff] border-[#172554]/30 rounded-xl px-5 py-4 text-slate-900 focus:border-[#172554]/60 outline-none transition-all placeholder:text-slate-300"
+                            style={{ borderWidth: '0.1px' }}
                             placeholder="John Doe"
                           />
                         </div>
                         {/* Email */}
                         <div className="space-y-2 relative group">
-                          <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1 group-focus-within:text-[#D4AF37] transition-colors">Email Address</label>
+                          <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1 transition-colors">Email Address</label>
                           <input
                             type="email"
                             id="email"
@@ -256,7 +257,8 @@ export default function ContactPage() {
                             required
                             value={formData.email}
                             onChange={handleInputChange}
-                            className="w-full bg-slate-50 border-none rounded-xl px-5 py-4 text-slate-900 focus:ring-2 focus:ring-[#D4AF37] transition-all placeholder:text-slate-300"
+                            className="w-full bg-[#f8fbff] border-[#172554]/30 rounded-xl px-5 py-4 text-slate-900 focus:border-[#172554]/60 outline-none transition-all placeholder:text-slate-300"
+                            style={{ borderWidth: '0.1px' }}
                             placeholder="john@example.com"
                           />
                         </div>
@@ -265,7 +267,7 @@ export default function ContactPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {/* Phone */}
                         <div className="space-y-2 relative group">
-                          <label htmlFor="phone" className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1 group-focus-within:text-[#D4AF37] transition-colors">Phone Number</label>
+                          <label htmlFor="phone" className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1 transition-colors">Phone Number</label>
                           <input
                             type="tel"
                             id="phone"
@@ -273,20 +275,22 @@ export default function ContactPage() {
                             required
                             value={formData.phone}
                             onChange={handleInputChange}
-                            className="w-full bg-slate-50 border-none rounded-xl px-5 py-4 text-slate-900 focus:ring-2 focus:ring-[#D4AF37] transition-all placeholder:text-slate-300"
+                            className="w-full bg-[#f8fbff] border-[#172554]/30 rounded-xl px-5 py-4 text-slate-900 focus:border-[#172554]/60 outline-none transition-all placeholder:text-slate-300"
+                            style={{ borderWidth: '0.1px' }}
                             placeholder="(555) 000-0000"
                           />
                         </div>
                         {/* Company */}
                         <div className="space-y-2 relative group">
-                          <label htmlFor="company" className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1 group-focus-within:text-[#D4AF37] transition-colors">Law Firm / Company</label>
+                          <label htmlFor="company" className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1 transition-colors">Law Firm / Company</label>
                           <input
                             type="text"
                             id="company"
                             name="company"
                             value={formData.company}
                             onChange={handleInputChange}
-                            className="w-full bg-slate-50 border-none rounded-xl px-5 py-4 text-slate-900 focus:ring-2 focus:ring-[#D4AF37] transition-all placeholder:text-slate-300"
+                            className="w-full bg-[#f8fbff] border-[#172554]/30 rounded-xl px-5 py-4 text-slate-900 focus:border-[#172554]/60 outline-none transition-all placeholder:text-slate-300"
+                            style={{ borderWidth: '0.1px' }}
                             placeholder="Optional"
                           />
                         </div>
@@ -302,7 +306,8 @@ export default function ContactPage() {
                           rows={6}
                           value={formData.message}
                           onChange={handleInputChange}
-                          className="w-full bg-slate-50 border-none rounded-xl px-5 py-4 text-slate-900 focus:ring-2 focus:ring-[#D4AF37] transition-all placeholder:text-slate-300 resize-none"
+                          className="w-full bg-[#f8fbff] border-[#172554]/30 rounded-xl px-5 py-4 text-slate-900 focus:border-[#172554]/60 outline-none transition-all placeholder:text-slate-300 resize-none"
+                          style={{ borderWidth: '0.1px' }}
                           placeholder="How can we assist you?"
                         />
                       </div>

@@ -14,7 +14,7 @@ const sections = [
     id: 'overview',
     title: 'Overview',
     paragraphs: [
-      'Engel & Engel is a Los Angeles forensic accounting firm. For over 30 years, we have provided clients with high-level forensic accounting services. Our clients include top law firms, public corporations, and private companies, seeking forensic accounting services on a variety of litigation issues for both plaintiffs and defendants. Our experience includes testifying in state, federal, and bankruptcy courts.',
+      'Engel & Engel is a Los Angeles forensic accounting firm. for over 30+ years, we have provided clients with high-level forensic accounting services. Our clients include top law firms, public corporations, and private companies, seeking forensic accounting services on a variety of litigation issues for both plaintiffs and defendants. Our experience includes testifying in state, federal, and bankruptcy courts.',
       'We rely on decades of experience and powerful analytical tools to expose hidden transactions, detect manipulated and erroneous information, and identify inconsistencies contained in relevant business records. We work with trial counsel to build a compelling forensic analysis that is understandable to judges and juries. With six professional certifications, extensive experience, and 20 research publications, clients can be confident that our forensic accounting analyses are consistent with established legal and financial principles that can withstand the scrutiny of the court.',
       'When the stakes are high, Engel & Engel can serve as your expert in connection with the following:',
     ],
