@@ -57,16 +57,16 @@ export default function Certifications() {
           <div className="h-px w-24 bg-[#D4AF37]/30 mx-auto" />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-1 gap-y-3 max-w-3xl mx-auto items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-16 max-w-6xl mx-auto items-center justify-items-center">
           {certifications.map((cert, index) => (
-            <div key={index} className="flex flex-col items-center group transition-all duration-500 hover:scale-110">
-              <div className="relative w-32 h-32 md:w-36 md:h-36">
+            <div key={index} className="flex flex-col items-center group transition-all duration-700 hover:-translate-y-4">
+              <div className="relative w-48 h-48 md:w-60 md:h-60 transition-all duration-700 group-hover:drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]">
                 <Image
                   src={cert.image}
                   alt={cert.alt}
                   fill
-                  className="object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(212,175,55,0.4)] transition-all"
-                  sizes="(max-width: 768px) 50vw, 15vw"
+                  className="object-contain drop-shadow-[0_0_20px_rgba(212,175,55,0.15)] group-hover:scale-110 transition-all duration-700"
+                  sizes="(max-width: 768px) 50vw, 30vw"
                 />
               </div>
             </div>
