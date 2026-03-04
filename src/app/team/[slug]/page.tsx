@@ -59,7 +59,7 @@ const teamMembers: TeamMember[] = [
     email: 'jasonengel@engelandengel.com',
     linkedin: 'jasonengel',
     image: '/images/team/jason-engel.jpg',
-    pdfQualifications: '/pdfs/jason-engel-qualifications.pdf',
+    pdfQualifications: 'https://engelandengel.com/wp-content/uploads/2024/02/jason-engel-cv.pdf',
     credentialChips: [
       'Certified Public Accountant',
       'Certified Fraud Examiner',
@@ -159,7 +159,7 @@ const teamMembers: TeamMember[] = [
     email: 'brandon@engelandengel.com',
     linkedin: 'brandon-engel',
     image: '/images/team/brandon-engel.jpg',
-    pdfQualifications: '/pdfs/brandon-engel-qualifications.pdf',
+    pdfQualifications: 'https://engelandengel.com/wp-content/uploads/2024/02/brandon-engel-cv-rev2.pdf',
     credentialChips: [
       'Certified Public Accountant',
       'Certified Fraud Examiner',
@@ -326,7 +326,7 @@ const teamMembers: TeamMember[] = [
     email: 'douglas@engelandengel.com',
     linkedin: 'douglasengelcpa',
     image: '/images/team/douglas-engel.jpg',
-    pdfQualifications: '/pdfs/douglas-engel-qualifications.pdf',
+    pdfQualifications: '',
     credentialChips: [
       'Certified Public Accountant',
       'Master of Business Administration',
@@ -407,18 +407,19 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
 
       <main className="bg-white min-h-screen text-slate-900 pb-32">
         {/* ══════════ PREMIUM HERO SECTION ══════════ */}
-        <section ref={heroRef} className="relative min-h-[500px] flex items-center pt-28 lg:pt-32 pb-12 overflow-hidden bg-[#0f3574]">
+        <section ref={heroRef} className="relative min-h-[500px] flex items-center pt-28 lg:pt-32 pb-12 overflow-hidden bg-[#0A1A3C]">
           {/* Architectural Background Elements */}
           <motion.div style={{ y: backgroundY }} className="absolute inset-0 z-0">
-            {/* Main Cinematic Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#0f3574] via-[#0f3574] to-[#1e3a8a]/30" />
+            {/* Main Cinematic Gradient matching Cases page */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#0A1A3C] via-[#0A1A3C] to-[#1e3a8a]/20" />
 
-            {/* Light High-point */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(59,130,246,0.15)_0%,transparent_70%)]" />
+            {/* Glowing Orbs similar to Cases page */}
+            <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full opacity-50" />
+            <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#3b82f6]/5 blur-[100px] rounded-full opacity-50" />
 
-            {/* Grid Lines */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_100%] opacity-20" />
-            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100%_80px] opacity-20" />
+            {/* Grid Lines - subtle */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100%] opacity-20" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100%_100px] opacity-20" />
           </motion.div>
 
           <motion.div style={{ y: contentY, opacity: opacityHero }} className="container-custom relative z-10">
@@ -461,11 +462,14 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   <div className="mb-4">
                     <div className="h-1 w-12 bg-[#D4AF37] mb-6 rounded-full" />
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tighter mb-4 leading-tight">
-                      Jason <span className="font-serif italic font-medium">A. Engel</span>
+                      {member.name.split(' ').slice(0, -1).join(' ')}{' '}
+                      <span className="font-serif italic font-medium">
+                        {member.name.split(' ').slice(-1)}
+                      </span>
                     </h1>
                   </div>
 
-                  <p className="text-base md:text-lg text-[#D4AF37] font-medium tracking-[0.2em] uppercase mb-10 opacity-80">
+                  <p className="text-base md:text-lg text-[#D4AF37] font-semibold tracking-[0.2em] uppercase mb-10">
                     {member.credentials}
                   </p>
 
@@ -511,12 +515,14 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                     )}
                   </div>
 
-                  <div className="flex justify-center mt-8">
-                    <a href={member.pdfQualifications} target="_blank" rel="noopener noreferrer"
-                      className="px-12 py-5 bg-[#D4AF37] text-[#0f3574] rounded-xl font-black uppercase tracking-wider hover:bg-[#B8962D] transition-all duration-300 shadow-[0_15px_40px_rgba(212,175,55,0.3)] hover:-translate-y-1 text-center">
-                      View {member.name.split(' ')[0]}&apos;s Professional Qualifications
-                    </a>
-                  </div>
+                  {member.pdfQualifications && (
+                    <div className="flex justify-center mt-8">
+                      <a href={member.pdfQualifications} target="_blank" rel="noopener noreferrer"
+                        className="px-12 py-5 bg-[#D4AF37] text-[#0f3574] rounded-xl font-black uppercase tracking-wider hover:bg-[#B8962D] transition-all duration-300 shadow-[0_15px_40px_rgba(212,175,55,0.3)] hover:-translate-y-1 text-center">
+                        View {member.name.split(' ')[0]}&apos;s Professional Qualifications
+                      </a>
+                    </div>
+                  )}
                 </motion.div>
               </div>
             </div>
@@ -531,7 +537,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
 
               {/* ▬▬ SIDEBAR: NAVIGATION & PRACTICE AREAS ▬▬ */}
               <aside className="lg:col-span-4 lg:block order-2 lg:order-1">
-                <div className="sticky top-32 max-h-[calc(100vh-160px)] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
+                <div className="sticky top-32 pr-2">
                   <div className="space-y-10">
                     {/* Practice Areas List */}
                     <div className="rounded-2xl p-8 bg-[#172554] shadow-2xl relative overflow-hidden group/practice border border-white/10">
@@ -550,7 +556,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                               className="group/item flex flex-col items-start"
                             >
                               <div className="flex items-center justify-between w-full py-2 group-hover/item:pl-2 transition-all duration-300">
-                                <span className="text-sm font-semibold text-slate-400 group-hover/item:text-white group-hover/item:text-[#D4AF37] transition-colors">{area.name}</span>
+                                <span className="text-sm font-semibold text-slate-200 group-hover/item:text-[#D4AF37] transition-colors">{area.name}</span>
                                 <span className="text-[#D4AF37] opacity-0 group-hover/item:opacity-100 transition-all transform translate-x-[-10px] group-hover/item:translate-x-0">→</span>
                               </div>
                               <div className="h-px w-full bg-white/5 group-hover/item:bg-[#D4AF37]/20 transition-colors" />
@@ -576,34 +582,34 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                     transition={{ duration: 0.8, delay: idx * 0.1 }}
                     className="group"
                   >
-                    <div className="flex items-end gap-6 mb-4 pb-2 border-b border-slate-100 overflow-hidden">
-                      <div className="relative">
-                        <span className="text-[60px] font-serif italic text-slate-100 absolute -top-8 -left-2 z-0 opacity-100 select-none group-hover:text-[#D4AF37]/10 transition-colors duration-500">
+                    <div className="flex items-end gap-6 mb-6 pb-2 overflow-hidden">
+                      <div className="relative inline-block">
+                        <span className="text-[60px] font-serif italic text-slate-200 absolute -top-8 -left-2 z-0 opacity-80 select-none group-hover:text-[#0f3574]/10 transition-colors duration-500">
                           0{idx + 1}
                         </span>
-                        <h2 className="relative z-10 text-3xl font-bold tracking-tight text-[#0f3574]">
+                        <h2 className="relative z-10 text-3xl font-bold tracking-tight text-[#0A1A3C] transition-colors duration-300 group-hover:text-[#0f3574]">
                           {section.title}
+                          <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-[#0f3574] to-transparent transition-all duration-500 group-hover:w-full" />
                         </h2>
                       </div>
-                      <div className="h-[2px] w-20 bg-gradient-to-r from-[#D4AF37] to-transparent mb-2 rounded-full transform origin-left group-hover:scale-x-150 transition-transform duration-700" />
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                       {section.paragraphs.length > 0 && (
                         <div className="relative">
-                          {idx === 0 && <span className="absolute -top-2 -left-4 text-6xl text-[#D4AF37]/20 font-serif leading-none italic select-none">“</span>}
-                          <p className="text-lg text-slate-700 leading-relaxed font-light">
+                          {idx === 0 && <span className="absolute -top-3 -left-6 text-7xl text-[#0f3574]/5 font-serif leading-none italic select-none">“</span>}
+                          <p className="text-lg text-slate-800 leading-relaxed font-normal">
                             {section.paragraphs[0]}
                           </p>
                         </div>
                       )}
 
                       {section.items && (
-                        <div className={`grid grid-cols-1 ${section.id === 'education' ? '' : 'md:grid-cols-2'} gap-x-6 gap-y-1 mt-4`}>
+                        <div className={`grid grid-cols-1 ${section.id === 'education' ? '' : 'md:grid-cols-2'} gap-x-8 gap-y-3 mt-6`}>
                           {section.items.map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 py-1.5 transition-all duration-300">
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shrink-0" />
-                              <span className="text-sm text-slate-600 font-medium">
+                            <div key={i} className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 border border-slate-100 transition-all duration-300 hover:border-[#0f3574]/30 hover:bg-white hover:shadow-md group/item">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-2 group-hover/item:scale-125 transition-transform" />
+                              <span className="text-sm text-slate-900 font-bold leading-snug">
                                 {item}
                               </span>
                             </div>
@@ -612,7 +618,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                       )}
 
                       {section.paragraphs.slice(1).map((paragraph, i) => (
-                        <p key={i} className="text-base text-slate-500 leading-relaxed">
+                        <p key={i} className="text-base text-slate-700 leading-relaxed font-normal">
                           {paragraph}
                         </p>
                       ))}
