@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
@@ -319,72 +319,107 @@ const stats = [
 // ─────────────────────────────────────────────
 
 export default function ForensicAccountingPage() {
+  const { scrollY } = useScroll();
+
+  // Parallax transforms
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
+
+  const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
+
   return (
     <>
       <Header />
-      <main className="bg-slate-50 min-h-screen text-slate-900">
+      <main className="bg-slate-50 min-h-screen text-slate-900 overflow-hidden">
 
-        {/* ══════════ HERO ══════════ */}
-        <section className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden bg-[#0f3574] text-white text-center">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 animate-ken-burns"
-              style={{ backgroundImage: 'url("https://images.pexels.com/photos/159213/hall-congress-architecture-building-159213.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080")' }}
+        {/* ══════════ CINEMATIC HERO ══════════ */}
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#0A1A3C]">
+          {/* Parallax Background Decorations */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            {/* Glowing orbs */}
+            <motion.div
+              style={{ y: y2, scale }}
+              className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#D4AF37]/10 blur-[150px] rounded-full"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0f3574] via-[#0f3574]/95 to-[#0f3574]" />
-            <div className="absolute top-0 right-0 w-[1200px] h-[800px] bg-[#D4AF37]/10 blur-[200px] rounded-full -translate-y-1/2 translate-x-1/4" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
+            <motion.div
+              style={{ y: y1 }}
+              className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#3b82f6]/10 blur-[120px] rounded-full"
+            />
+
             <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
           </div>
 
-          <div className="container-custom relative z-10">
+          <div className="container-custom relative z-10 w-full">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              style={{ y: springY1, opacity }}
+              className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tighter text-white">
-                Forensic Accounting Services
-              </h1>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+              >
+                <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white drop-shadow-2xl">
+                  Forensic Accounting <br />
+                  <span className="font-serif italic text-[#D4AF37] font-medium">Services</span>
+                </h1>
+                <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6" />
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* ══════════ OVERVIEW ══════════ */}
-        <section className="py-16 lg:py-20 bg-white">
+        <section className="py-24 relative bg-white">
           <div className="container-custom">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="lg:col-span-7 space-y-5"
-              >
-                {sections.filter((s) => s.id === 'overview').map((section) => (
-                  <div key={section.id} className="space-y-5">
-                    {section.paragraphs.map((p, i) => (
-                      <p key={i} className="text-base text-slate-600 leading-[1.9]">{p}</p>
-                    ))}
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="lg:col-span-7"
+                >
+                  <div className="space-y-6">
+                    <p className="text-xl text-slate-700 leading-relaxed font-medium">
+                      <strong>Engel & Engel</strong> is a Los Angeles forensic accounting firm. for over 30+ years, we have provided clients with high-level forensic accounting services. Our clients include top law firms, public corporations, and private companies, seeking forensic accounting services on a variety of litigation issues for both plaintiffs and defendants. Our experience includes testifying in state, federal, and bankruptcy courts.
+                    </p>
+
+                    <p className="text-lg text-slate-600 leading-[1.8]">
+                      We rely on decades of experience and powerful analytical tools to expose hidden transactions, detect manipulated and erroneous information, and identify inconsistencies contained in relevant business records. We work with trial counsel to build a compelling forensic analysis that is understandable to judges and juries. With six professional certifications, extensive experience, and 20 research publications, clients can be confident that our forensic accounting analyses are consistent with established legal and financial principles that can withstand the scrutiny of the court.
+                    </p>
+
+                    <div className="p-8 bg-blue-50 rounded-2xl">
+                      <p className="text-lg text-[#0f3574] font-semibold italic">
+                        When the stakes are high, Engel & Engel can serve as your expert in connection with the following:
+                      </p>
+                    </div>
                   </div>
-                ))}
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.15 }}
-                className="lg:col-span-5"
-              >
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/images/accounting-111.jpg"
-                    alt="Forensic Accounting"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </motion.div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="lg:col-span-5 relative"
+                >
+                  <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl group">
+                    <Image
+                      src="/images/accounting-111.jpg"
+                      alt="Forensic Accounting Office"
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f3574]/40 to-transparent" />
+                  </div>
+                  {/* Decorative element */}
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#D4AF37]/10 -z-10 rounded-full blur-2xl" />
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -401,9 +436,9 @@ export default function ForensicAccountingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white rounded-2xl border border-slate-200/80 p-6 hover:shadow-lg hover:border-slate-300/80 transition-all duration-300"
+                  className="bg-blue-50/30 rounded-2xl border border-blue-100 p-6 hover:shadow-lg hover:border-blue-200 transition-all duration-300"
                 >
-                  <h2 className="text-base font-bold text-[#0f3574] uppercase tracking-wide mb-4 pb-3 border-b border-slate-100">
+                  <h2 className="text-base font-bold text-[#0f3574] uppercase tracking-wide mb-4 pb-3 border-b border-blue-100">
                     {section.title}
                   </h2>
                   {section.paragraphs.length > 0 && (
@@ -413,7 +448,7 @@ export default function ForensicAccountingPage() {
                     <ul className="columns-1 sm:columns-2 gap-x-6">
                       {section.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-2 py-1.5 break-inside-avoid">
-                          <span className="mt-1.5 w-1 h-1 rounded-full bg-blue-400 flex-shrink-0" />
+                          <span className="mt-1.5 w-1 h-1 rounded-full bg-[#0f3574] flex-shrink-0" />
                           <span className="text-sm text-slate-600">{item}</span>
                         </li>
                       ))}
@@ -430,9 +465,9 @@ export default function ForensicAccountingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white rounded-2xl border border-slate-200/80 p-6 hover:shadow-lg hover:border-slate-300/80 transition-all duration-300"
+                  className="bg-blue-50/30 rounded-2xl border border-blue-100 p-6 hover:shadow-lg hover:border-blue-200 transition-all duration-300"
                 >
-                  <h2 className="text-base font-bold text-[#0f3574] uppercase tracking-wide mb-4 pb-3 border-b border-slate-100">
+                  <h2 className="text-base font-bold text-[#0f3574] uppercase tracking-wide mb-4 pb-3 border-b border-blue-100">
                     {section.title}
                   </h2>
                   {section.paragraphs.length > 0 && (
@@ -442,7 +477,7 @@ export default function ForensicAccountingPage() {
                     <ul className="columns-1 sm:columns-2 gap-x-6">
                       {section.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-2 py-1.5 break-inside-avoid">
-                          <span className="mt-1.5 w-1 h-1 rounded-full bg-blue-400 flex-shrink-0" />
+                          <span className="mt-1.5 w-1 h-1 rounded-full bg-[#0f3574] flex-shrink-0" />
                           <span className="text-sm text-slate-600">{item}</span>
                         </li>
                       ))}
@@ -455,52 +490,102 @@ export default function ForensicAccountingPage() {
         </section>
 
         {/* ══════════ INDUSTRY EXPERTISE ══════════ */}
-        {sections.filter((s) => s.id === 'industry-expertise').map((section) => (
-          <section key={section.id} className="py-16 lg:py-20 bg-white">
-            <div className="container-custom">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className="text-xl font-bold text-[#0f3574] uppercase tracking-wide mb-8 pb-4 border-b border-slate-200">
-                  {section.title}
-                </h2>
-                {section.items && section.items.length > 0 && (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-                    {section.items.map((item, i) => (
-                      <div key={i} className="flex items-center gap-2.5 px-4 py-2.5 bg-slate-50 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-colors duration-200">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
-                        <span className="text-sm text-slate-600">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            </div>
-          </section>
-        ))}
-
-        {/* ══════════ CONTACT FOOTER ══════════ */}
-        <section className="py-12 bg-slate-50 border-t border-slate-200">
-          <div className="container-custom">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-slate-500">
-              <p>
-                For additional information or a consultation, please contact:{' '}
-                <strong className="text-[#0f3574]">Brandon J. Engel, CPA, CFE</strong>
-              </p>
-              <div className="flex items-center gap-4">
-                <a href="mailto:brandon@engelandengel.com" className="text-primary-600 hover:text-primary-800 hover:underline transition-colors">
-                  brandon@engelandengel.com
-                </a>
-                <span className="text-slate-300">|</span>
-                <a href="tel:+13102772220" className="text-primary-600 hover:text-primary-800 hover:underline transition-colors">
-                  310-277-2220
-                </a>
+        {
+          sections.filter((s) => s.id === 'industry-expertise').map((section) => (
+            <section key={section.id} className="py-16 lg:py-20 bg-white">
+              <div className="container-custom">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h2 className="text-xl font-bold text-[#0f3574] uppercase tracking-wide mb-8 pb-4 border-b border-slate-200">
+                    {section.title}
+                  </h2>
+                  {section.items && section.items.length > 0 && (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+                      {section.items.map((item, i) => (
+                        <div key={i} className="flex items-center gap-2.5 px-4 py-2.5 bg-slate-50 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-colors duration-200">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0f3574] flex-shrink-0" />
+                          <span className="text-sm text-slate-600">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
               </div>
-            </div>
+            </section>
+          ))
+        }
+
+        {/* ══════════ CONTACT CTA ══════════ */}
+        <section className="py-24 relative bg-slate-50 overflow-hidden">
+          <div className="container-custom relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="max-w-6xl mx-auto"
+            >
+              <div className="bg-white rounded-[2.5rem] border border-blue-100 shadow-2xl overflow-hidden flex flex-col lg:flex-row items-stretch">
+                {/* Left side: Message */}
+                <div className="flex-1 p-10 md:p-16 flex flex-col justify-center bg-white border-b lg:border-b-0 lg:border-r border-blue-50">
+                  <div className="space-y-6">
+                    <div className="inline-flex items-center gap-3 px-3 py-1 bg-blue-50 text-[#0f3574] rounded-full text-xs font-bold uppercase tracking-widest">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0f3574]" />
+                      Direct Inquiry
+                    </div>
+                    <p className="text-2xl md:text-3xl font-medium text-slate-800 leading-snug">
+                      For additional information about Engel & Engel&apos;s Forensic Accounting Services or a consultation, please contact:
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right side: Contact Details */}
+                <div className="bg-slate-50/50 p-10 md:p-16 flex flex-col justify-center min-w-[320px] lg:min-w-[450px]">
+                  <div className="space-y-8">
+                    <div className="space-y-1">
+                      <p className="text-sm font-bold text-blue-600 uppercase tracking-widest">Expert Contact</p>
+                      <h3 className="text-3xl font-bold text-[#0f3574] tracking-tight">Brandon J. Engel, CPA, CFE</h3>
+                    </div>
+
+                    <div className="space-y-4 pt-6 border-t border-slate-200">
+                      <a
+                        href="mailto:brandon@engelandengel.com"
+                        className="flex items-center gap-4 group/link"
+                      >
+                        <div className="w-12 h-12 rounded-xl bg-white border border-blue-100 flex items-center justify-center text-blue-600 group-hover/link:bg-[#0f3574] group-hover/link:text-white group-hover/link:border-[#0f3574] transition-all duration-300 shadow-sm">
+                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                        <span className="text-xl font-bold text-slate-700 group-hover/link:text-[#0f3574] transition-colors border-b-2 border-transparent group-hover/link:border-blue-100 pb-0.5">
+                          brandon@engelandengel.com
+                        </span>
+                      </a>
+
+                      <a
+                        href="tel:310-277-2220"
+                        className="flex items-center gap-4 group/link"
+                      >
+                        <div className="w-12 h-12 rounded-xl bg-white border border-blue-100 flex items-center justify-center text-blue-600 group-hover/link:bg-[#0f3574] group-hover/link:text-white group-hover/link:border-[#0f3574] transition-all duration-300 shadow-sm">
+                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                          </svg>
+                        </div>
+                        <span className="text-xl font-bold text-slate-700 group-hover/link:text-[#0f3574] transition-colors border-b-2 border-transparent group-hover/link:border-blue-100 pb-0.5">
+                          310-277-2220
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100/20 blur-[120px] rounded-full -z-10" />
         </section>
 
         <Footer />

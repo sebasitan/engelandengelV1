@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
@@ -121,34 +121,54 @@ const stats = [
 // ─────────────────────────────────────────────
 
 export default function PracticeAreasPage() {
+  const { scrollY } = useScroll();
+
+  // Parallax transforms
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
+
+  const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
+
   return (
     <>
       <Header />
-      <main className="bg-slate-50 min-h-screen">
+      <main className="bg-slate-50 min-h-screen text-slate-900 overflow-hidden">
 
         {/* ══════════ CINEMATIC HERO ══════════ */}
-        <section className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden bg-[#0f3574] text-white text-center">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 animate-ken-burns"
-              style={{ backgroundImage: 'url("https://images.pexels.com/photos/159213/hall-congress-architecture-building-159213.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080")' }}
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#0A1A3C]">
+          {/* Parallax Background Decorations */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            {/* Glowing orbs */}
+            <motion.div
+              style={{ y: y2, scale }}
+              className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#D4AF37]/10 blur-[150px] rounded-full"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0f3574] via-[#0f3574]/95 to-[#0f3574]" />
-            <div className="absolute top-0 right-0 w-[1200px] h-[800px] bg-[#D4AF37]/10 blur-[200px] rounded-full -translate-y-1/2 translate-x-1/4" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
+            <motion.div
+              style={{ y: y1 }}
+              className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#3b82f6]/10 blur-[120px] rounded-full"
+            />
+
             <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
           </div>
 
-          <div className="container-custom relative z-10">
+          <div className="container-custom relative z-10 w-full">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              style={{ y: springY1, opacity }}
+              className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tighter text-white">
-                Practice <br />
-                <span className="font-serif italic text-[#D4AF37] font-medium text-[2.5rem]">Areas</span>
-              </h1>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+              >
+                <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white drop-shadow-2xl">
+                  Practice <br />
+                  <span className="font-serif italic text-[#D4AF37] font-medium">Areas</span>
+                </h1>
+                <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6" />
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -167,30 +187,32 @@ export default function PracticeAreasPage() {
                 >
                   <Link
                     href={area.href}
-                    className="group block h-full bg-white border border-slate-100 p-8 rounded-2xl shadow-sm hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:border-[#D4AF37]/30 transition-all duration-500 relative overflow-hidden"
+                    className="group relative bg-white p-8 rounded-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] border border-[#0f3574] border-t-4 hover:shadow-[0_20px_60px_-20px_rgba(15,53,116,0.15)] transition-all duration-500 flex flex-col h-full"
                   >
-                    {/* Background decoration */}
-                    <div className="absolute -top-4 -right-4 w-12 h-12 bg-slate-50 rounded-full group-hover:scale-110 transition-transform" />
-                    <div className="absolute bottom-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-1 text-[#D4AF37]">
-                      <svg fill="currentColor" viewBox="0 0 24 24" className="w-full h-full">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
-                      </svg>
-                    </div>
-
                     <div className="relative z-10 flex flex-col h-full">
-                      <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-[#0f3574] group-hover:bg-[#D4AF37] group-hover:text-white transition-colors mb-6">
-                        <div className="w-4 h-4 border-2 border-current rounded-sm rotate-45" />
+                      <div className="mb-6 flex items-center justify-between">
+                        <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-[#0f3574] group-hover:bg-[#0f3574] group-hover:text-white transition-all duration-500">
+                          <div className="w-5 h-5 border-2 border-current rounded-sm rotate-45" />
+                        </div>
+                        <span className="text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0">
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </span>
                       </div>
-                      <h3 className="text-xl font-bold text-[#0f3574] mb-3 tracking-tight group-hover:text-primary-600 transition-colors">
+
+                      <h3 className="text-xl font-bold text-[#0A1A3C] mb-4 tracking-tight leading-tight group-hover:text-[#0f3574] transition-colors duration-300 relative inline-block">
                         {area.title}
+                        <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-[#0f3574] to-transparent transition-all duration-500 group-hover:w-full" />
                       </h3>
-                      <p className="text-sm text-slate-500 font-light leading-relaxed flex-grow">
+
+                      <p className="text-slate-600 font-light leading-relaxed text-[0.95rem] flex-grow mb-6">
                         {area.description}
                       </p>
 
-                      <div className="mt-8 flex items-center gap-2 text-[10px] font-bold tracking-widest text-slate-300 group-hover:text-[#D4AF37] transition-colors uppercase">
-                        Explore Area
-                        <span className="w-8 h-[1px] bg-slate-100 group-hover:bg-[#D4AF37] transition-all group-hover:w-12" />
+                      <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest text-[#0f3574] opacity-70 group-hover:opacity-100 transition-all uppercase mt-auto">
+                        View Service
+                        <div className="h-px flex-grow bg-[#0f3574]/10 group-hover:bg-[#0f3574]/30" />
                       </div>
                     </div>
                   </Link>
@@ -201,35 +223,51 @@ export default function PracticeAreasPage() {
         </section>
 
         {/* ══════════ CTA SECTION ══════════ */}
-        <section className="py-32 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[#0f3574]" />
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[160px] rounded-full translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/5 blur-[140px] rounded-full -translate-x-1/2 translate-y-1/2" />
+        <section className="py-24 relative bg-slate-50">
+          <div className="container-custom">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-8 md:p-12 lg:p-20 bg-[#0A1A3C] rounded-[2rem] text-white relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl group-hover:bg-white/10 transition-colors duration-700" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#D4AF37]/10 rounded-full -translate-x-1/2 translate-y-1/2 blur-2xl transition-all duration-1000 group-hover:scale-125" />
 
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto text-center border border-white/10 p-12 lg:p-20 rounded-[3rem] backdrop-blur-sm bg-white/5 shadow-2xl">
-              <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#D4AF37] mb-8 block">Ready to Begin?</span>
-              <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white tracking-tight">
-                Secure a Confidential <br />
-                <span className="font-serif italic text-[#D4AF37] font-medium text-[2.5rem]">Consultation</span>
-              </h2>
-              <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto mb-12">
-                Discuss your needs with Los Angeles’ leading forensic accounting experts. We provide clear, defensive financial evidence that withstands court scrutiny.
-              </p>
+              <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
+                <div className="max-w-2xl text-center md:text-left">
+                  <span className="text-[#D4AF37] font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Request Consultation</span>
+                  <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                    Secure a Confidential <br />
+                    <span className="font-serif italic text-[#D4AF37] font-medium transition-all duration-500">Consultation</span>
+                  </h2>
+                  <p className="text-slate-300 text-lg leading-relaxed mb-8 max-w-xl">
+                    Discuss your needs with Los Angeles’ leading forensic accounting experts. We provide clear, defensive financial evidence that withstands court scrutiny.
+                  </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Link href="/contact" className="px-10 py-5 bg-[#D4AF37] hover:bg-[#B8962E] text-black font-bold text-lg rounded-2xl shadow-xl transition-all duration-300">
-                  Schedule Consultation
-                </Link>
-                <a href="tel:+13102772220" className="px-10 py-5 bg-white/5 border border-white/20 hover:bg-white/10 text-white font-bold text-lg rounded-2xl transition-all duration-300">
-                  Call (310) 277-2220
-                </a>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link href="/contact" className="bg-[#D4AF37] hover:bg-[#C5A028] text-[#0A1A3C] px-10 py-4 rounded-full font-bold transition-all duration-300 hover:scale-105 text-center">
+                      Schedule Now
+                    </Link>
+                    <a href="tel:+13102772220" className="border border-white/20 hover:border-white/50 text-white px-10 py-4 rounded-full font-bold transition-all duration-300 hover:bg-white/5 text-center">
+                      (310) 277-2220
+                    </a>
+                  </div>
+                </div>
+
+                <div className="hidden lg:block">
+                  <div className="w-px h-64 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+                </div>
+
+                <div className="text-center md:text-right space-y-4 min-w-[240px]">
+                  <p className="text-[10px] uppercase tracking-widest text-[#D4AF37] font-bold">Primary Contact</p>
+                  <p className="text-xl font-bold">Brandon J. Engel</p>
+                  <p className="text-slate-400 font-light">CPA, CFE, CIRA, CVA, MAFF, ABV</p>
+                  <div className="h-px w-12 bg-[#D4AF37] ml-auto hidden md:block" />
+                  <p className="text-slate-400">brandon@engelandengel.com</p>
+                </div>
               </div>
-
-              <p className="text-xs text-slate-500 tracking-widest uppercase mt-12 font-bold">
-                Serving Law Firms, Corporations & High-Net-Worth Individuals
-              </p>
-            </div>
+            </motion.div>
           </div>
         </section>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
@@ -55,157 +55,131 @@ const stats = [
 // ─────────────────────────────────────────────
 
 export default function ConstructionLitigationPage() {
-  const [activeTabId, setActiveTabId] = useState('overview');
-  const activeSection = sections.find((s) => s.id === activeTabId)!;
+  const { scrollY } = useScroll();
+
+  // Parallax transforms
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
+
+  const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
 
   return (
     <>
       <Header />
-      <main className="bg-slate-50 min-h-screen text-slate-900">
+      <main className="bg-slate-50 min-h-screen text-slate-900 overflow-hidden">
 
         {/* ══════════ CINEMATIC HERO ══════════ */}
-        <section className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden bg-[#0f3574] text-white text-center">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 animate-ken-burns"
-              style={{ backgroundImage: 'url("https://images.pexels.com/photos/159213/hall-congress-architecture-building-159213.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080")' }}
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#0A1A3C]">
+          {/* Parallax Background Decorations */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            {/* Glowing orbs */}
+            <motion.div
+              style={{ y: y2, scale }}
+              className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#D4AF37]/10 blur-[150px] rounded-full"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0f3574] via-[#0f3574]/95 to-[#0f3574]" />
-            <div className="absolute top-0 right-0 w-[1200px] h-[800px] bg-[#D4AF37]/10 blur-[200px] rounded-full -translate-y-1/2 translate-x-1/4" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
+            <motion.div
+              style={{ y: y1 }}
+              className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#3b82f6]/10 blur-[120px] rounded-full"
+            />
+
             <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
           </div>
 
-          <div className="container-custom relative z-10">
+          <div className="container-custom relative z-10 w-full">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              style={{ y: springY1, opacity }}
+              className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tighter text-white">
-                Construction <br />
-                <span className="font-serif italic text-[#D4AF37] font-medium text-[2.5rem]">Litigation</span>
-              </h1>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+              >
+                <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white drop-shadow-2xl">
+                  Construction <br />
+                  <span className="font-serif italic text-[#D4AF37] font-medium">Litigation</span>
+                </h1>
+                <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6" />
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* ══════════ CONTENT BODY ══════════ */}
-        <section className="pb-32 relative bg-white">
+        <section className="py-24 relative bg-slate-50">
           <div className="container-custom">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24">
-
-              {/* ▬▬ LEFT COLUMN: STICKY SIDEBAR ▬▬ */}
-              <motion.aside
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="lg:col-span-4 lg:block"
-              >
-                <div className="sticky top-32 overflow-hidden bg-white border border-slate-200 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] group/sidebar">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full translate-x-16 -translate-y-16 group-hover/sidebar:scale-150 transition-transform duration-1000" />
-                  <div className="absolute -bottom-8 -left-8 w-24 h-24 border border-[#D4AF37]/10 rounded-full" />
-                  <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#D4AF37]/30 rounded-tl-2xl" />
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#D4AF37]/30 rounded-br-2xl" />
-
-                  <div className="relative z-10 p-6 sm:p-8">
-                    <div className="flex flex-col mb-6">
-                      <h3 className="text-xl font-bold text-[#0f3574] tracking-tight flex items-center gap-3">
-                        Construction Litigation
-                        <div className="h-px w-6 bg-[#D4AF37]" />
-                      </h3>
-                    </div>
-
-                    <nav className="space-y-0 relative max-h-[60vh] overflow-y-auto pr-1">
-                      {sections.map((section) => (
-                        <button
-                          key={section.id}
-                          onClick={() => setActiveTabId(section.id)}
-                          className={`group/item w-full text-left flex items-center py-2.5 border-b border-slate-100 last:border-0 relative overflow-hidden transition-all duration-300 ${activeTabId === section.id ? 'bg-slate-50' : ''}`}
-                        >
-                          <div className="absolute inset-0 bg-slate-50 -translate-x-full group-hover/item:translate-x-0 transition-transform duration-500" />
-                          <div className="relative z-10 flex items-center justify-between w-full">
-                            <div className="flex items-center gap-3">
-                              <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-300 ${activeTabId === section.id ? 'bg-[#D4AF37] scale-150' : 'bg-slate-200 group-hover/item:bg-[#D4AF37]'}`} />
-                              <span className={`text-sm font-medium transition-colors duration-300 ${activeTabId === section.id ? 'text-[#0f3574]' : 'text-slate-500 group-hover/item:text-[#0f3574]'}`}>
-                                {section.title}
-                              </span>
-                            </div>
-                            <span className={`text-[#D4AF37] transition-all duration-300 font-light text-lg ${activeTabId === section.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 group-hover/item:opacity-100 group-hover/item:translate-x-0'}`}>→</span>
-                          </div>
-                        </button>
-                      ))}
-                    </nav>
-
-                    <div className="mt-6 flex items-center gap-3 pt-6 border-t border-slate-100">
-                      <div className="w-8 h-8 rounded-lg bg-[#0f3574] flex items-center justify-center text-[10px] font-bold text-[#D4AF37]">
-                        E&E
-                      </div>
-                      <span className="text-[10px] tracking-widest text-slate-400 font-bold uppercase">
-                        Legal Excellence
-                      </span>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+              {sections.map((section, idx) => (
+                <motion.div
+                  key={section.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  className={`group relative bg-white p-8 md:p-10 rounded-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] border border-[#0f3574] border-t-4 hover:shadow-[0_20px_60px_-20px_rgba(15,53,116,0.15)] transition-all duration-500 flex flex-col ${section.id === 'overview' ? 'md:col-span-2' : ''
+                    }`}
+                >
+                  <div className="mb-8">
+                    <h3 className="text-[1.75rem] font-bold text-[#0A1A3C] tracking-tight leading-tight mb-6 group-hover:text-[#0f3574] transition-colors duration-300 relative inline-block">
+                      {section.title}
+                      <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-[#0f3574] to-transparent transition-all duration-500 group-hover:w-full" />
+                    </h3>
                   </div>
-                </div>
-              </motion.aside>
 
-              {/* ▬▬ MAIN CONTENT ▬▬ */}
-              <div className="lg:col-span-8 min-w-0 flex flex-col items-start pt-8">
-                <div className="w-full max-w-4xl lg:pr-12 min-h-[400px]">
-                  <motion.section
-                    key={activeTabId}
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <div className="flex items-center gap-4 mb-10">
-                      <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#0f3574] uppercase leading-tight">
-                        {activeSection.title}
-                      </h2>
-                      <div className="h-px flex-1 bg-gradient-to-r from-[#D4AF37]/30 to-transparent" />
-                    </div>
+                  <div className="space-y-6 flex-grow">
+                    {section.paragraphs.map((p, i) => (
+                      <p key={i} className="text-slate-600 font-light leading-relaxed text-[1.1rem]">
+                        {p}
+                      </p>
+                    ))}
 
-                    <div className="space-y-8">
-                      {activeSection.paragraphs.map((p, i) => (
-                        <p key={i} className="text-xl text-slate-600 font-light leading-relaxed">{p}</p>
-                      ))}
+                    {section.subheading && (
+                      <p className="text-lg font-semibold text-[#0f3574] pt-2">{section.subheading}</p>
+                    )}
 
-                      {activeSection.subheading && (
-                        <p className="text-xl font-semibold text-[#0f3574] pt-2">{activeSection.subheading}</p>
-                      )}
+                    {section.items && section.items.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 mt-4">
+                        {section.items.map((item, i) => (
+                          <div key={i} className="flex items-start gap-3 group/item">
+                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#D4AF37] flex-shrink-0 transition-transform duration-300 group-hover/item:scale-125" />
+                            <span className="text-slate-700 font-medium leading-tight">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
-                      {activeSection.items && activeSection.items.length > 0 && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-                          {activeSection.items.map((item, i) => (
-                            <div key={i} className="flex items-start gap-3 group/item">
-                              <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#D4AF37] flex-shrink-0" />
-                              <span className="text-lg text-slate-700 font-medium leading-tight">{item}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </motion.section>
-                </div>
-
-                {/* Contact Footer */}
-                <div className="w-full mt-16 pt-12 border-t border-slate-100">
-                  <p className="text-slate-500 text-base">
+            {/* Contact Footer */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-20 p-8 md:p-12 bg-[#0A1A3C] rounded-2xl text-white relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl group-hover:bg-white/10 transition-colors duration-700" />
+              <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div className="max-w-2xl text-center md:text-left">
+                  <h4 className="text-2xl font-bold mb-4">Professional Consultation</h4>
+                  <p className="text-slate-300 text-lg leading-relaxed">
                     For additional information about Engel &amp; Engel&apos;s Forensic Accounting Services or a consultation, please contact:{' '}
-                    <strong className="text-[#0f3574]">Brandon J. Engel, CPA, CFE</strong>{' '}
-                    <a href="mailto:brandon@engelandengel.com" className="text-primary-600 hover:underline">
-                      brandon@engelandengel.com
-                    </a>
-                    {', '}
-                    <a href="tel:+13102772220" className="text-primary-600 hover:underline">
-                      310-277-2220
-                    </a>
+                    <span className="text-[#D4AF37] font-semibold text-white">Brandon J. Engel, CPA, CFE</span>
                   </p>
                 </div>
+                <div className="flex flex-col items-center md:items-end gap-3 min-w-[300px]">
+                  <a href="mailto:brandon@engelandengel.com" className="bg-[#D4AF37] hover:bg-[#C5A028] text-[#0A1A3C] px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 w-full text-center">
+                    brandon@engelandengel.com
+                  </a>
+                  <a href="tel:+13102772220" className="border border-white/20 hover:border-white/50 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:bg-white/5 w-full text-center">
+                    310-277-2220
+                  </a>
+                </div>
               </div>
-
-            </div>
+            </motion.div>
           </div>
         </section>
 

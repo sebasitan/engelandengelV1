@@ -26,30 +26,30 @@ export default function EventsContent({ featuredEvents, otherEvents, upcomingEve
         <>
             {/* ══════════ PREMIUM HERO SECTION ══════════ */}
             <section className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden bg-[#0f3574] text-white text-center">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 animate-ken-burns"
-              style={{ backgroundImage: 'url("https://images.pexels.com/photos/159213/hall-congress-architecture-building-159213.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080")' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0f3574] via-[#0f3574]/95 to-[#0f3574]" />
-            <div className="absolute top-0 right-0 w-[1200px] h-[800px] bg-[#D4AF37]/10 blur-[200px] rounded-full -translate-y-1/2 translate-x-1/4" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
-            <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
-          </div>
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                    <div
+                        className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 animate-ken-burns"
+                        style={{ backgroundImage: 'url("https://images.pexels.com/photos/159213/hall-congress-architecture-building-159213.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080")' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#0f3574] via-[#0f3574]/95 to-[#0f3574]" />
+                    <div className="absolute top-0 right-0 w-[1200px] h-[800px] bg-[#D4AF37]/10 blur-[200px] rounded-full -translate-y-1/2 translate-x-1/4" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
+                    <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
+                </div>
 
-          <div className="container-custom relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tighter text-white">
-                Connect With <br />
-                <span className="font-serif italic text-[#D4AF37] font-medium text-[2.5rem]">Experts</span>
-              </h1>
-            </motion.div>
-          </div>
-        </section>
+                <div className="container-custom relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tighter text-white">
+                            Connect With <br />
+                            <span className="font-serif italic text-[#D4AF37] font-medium text-[2.5rem]">Experts</span>
+                        </h1>
+                    </motion.div>
+                </div>
+            </section>
 
             {/* ══════════ FEATURED EVENTS SECTION ══════════ */}
             <section id="upcoming-events" className="py-24 bg-white relative overflow-hidden">
