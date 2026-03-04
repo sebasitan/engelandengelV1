@@ -429,7 +429,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                 initial={{ opacity: 0, scale: 0.95, x: -30 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="lg:col-span-4"
+                className="lg:col-span-5"
               >
                 <div className="relative group mx-auto lg:mx-0">
                   {/* Decorative Frame */}
@@ -437,7 +437,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   <div className="absolute -top-4 -right-4 w-12 h-12 border-t-2 border-r-2 border-[#D4AF37] rounded-tr-lg" />
                   <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b-2 border-l-2 border-[#D4AF37] rounded-bl-lg" />
 
-                  <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-[4/5] bg-slate-800">
+                  <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-[3/4] bg-slate-800">
                     <Image
                       src={member.image}
                       alt={member.name}
@@ -451,7 +451,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
               </motion.div>
 
               {/* Identity & Contact Column */}
-              <div className="lg:col-span-8">
+              <div className="lg:col-span-7">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -529,8 +529,43 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
           <div className="container-custom">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
+              {/* ▬▬ SIDEBAR: NAVIGATION & PRACTICE AREAS ▬▬ */}
+              <aside className="lg:col-span-4 lg:block order-2 lg:order-1">
+                <div className="sticky top-32 max-h-[calc(100vh-160px)] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
+                  <div className="space-y-10">
+                    {/* Practice Areas List */}
+                    <div className="rounded-2xl p-8 bg-[#172554] shadow-2xl relative overflow-hidden group/practice border border-white/10">
+                      <div className="absolute top-0 left-0 w-full h-1 bg-[#D4AF37]" />
+                      <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+
+                      <h3 className="text-xl font-bold text-white mb-8 relative z-10">
+                        Practice Areas
+                      </h3>
+                      <div className="space-y-1 relative z-10">
+                        <div className="space-y-1 relative z-10">
+                          {member.practiceAreas.map((area, i) => (
+                            <Link
+                              key={area.slug}
+                              href={`/practice-areas/${area.slug}`}
+                              className="group/item flex flex-col items-start"
+                            >
+                              <div className="flex items-center justify-between w-full py-2 group-hover/item:pl-2 transition-all duration-300">
+                                <span className="text-sm font-semibold text-slate-400 group-hover/item:text-white group-hover/item:text-[#D4AF37] transition-colors">{area.name}</span>
+                                <span className="text-[#D4AF37] opacity-0 group-hover/item:opacity-100 transition-all transform translate-x-[-10px] group-hover/item:translate-x-0">→</span>
+                              </div>
+                              <div className="h-px w-full bg-white/5 group-hover/item:bg-[#D4AF37]/20 transition-colors" />
+                            </Link>
+                          ))}
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+
               {/* ▬▬ MAIN CONTENT: BIOGRAPHY ▬▬ */}
-              <div className="lg:col-span-8 space-y-12 pt-4">
+              <div className="lg:col-span-8 space-y-12 pt-4 order-1 lg:order-2">
                 {member.sections.map((section, idx) => (
                   <motion.section
                     key={section.id}
@@ -585,38 +620,6 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   </motion.section>
                 ))}
               </div>
-
-              {/* ▬▬ SIDEBAR: NAVIGATION & PRACTICE AREAS ▬▬ */}
-              <aside className="lg:col-span-4 lg:block">
-                <div className="sticky top-32 max-h-[calc(100vh-160px)] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
-                  <div className="space-y-10">
-                    {/* Practice Areas List */}
-                    <div className="rounded-2xl p-8 bg-gradient-to-br from-[#2563eb] to-[#0f3574] shadow-2xl relative overflow-hidden group/practice border border-white/10">
-                      <div className="absolute top-0 left-0 w-full h-1 bg-[#D4AF37]" />
-                      <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
-
-                      <h3 className="text-xl font-bold text-white mb-8 relative z-10">
-                        Practice Areas
-                      </h3>
-                      <div className="space-y-1 relative z-10">
-                        {member.practiceAreas.map((area, i) => (
-                          <Link
-                            key={area.slug}
-                            href={`/practice-areas/${area.slug}`}
-                            className="group/item flex flex-col items-start"
-                          >
-                            <div className="flex items-center justify-between w-full py-2 group-hover/item:pl-2 transition-all duration-300">
-                              <span className="text-sm font-semibold text-slate-400 group-hover/item:text-white group-hover/item:text-[#D4AF37] transition-colors">{area.name}</span>
-                              <span className="text-[#D4AF37] opacity-0 group-hover/item:opacity-100 transition-all transform translate-x-[-10px] group-hover/item:translate-x-0">→</span>
-                            </div>
-                            <div className="h-px w-full bg-white/5 group-hover/item:bg-[#D4AF37]/20 transition-colors" />
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </aside>
 
             </div>
           </div>

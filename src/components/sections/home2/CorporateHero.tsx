@@ -80,10 +80,10 @@ export default function CorporateHero() {
             {/* High-End Corporate Background */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/corporate_office_la_1772279101058.png"
-                    alt="Corporate Office"
+                    src="/images/team.jpg"
+                    alt="Expert Team"
                     fill
-                    className="object-cover brightness-[0.4]"
+                    className="object-cover object-top brightness-[0.3]"
                     priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F1E] via-[#0A0F1E]/60 to-transparent" />

@@ -91,10 +91,10 @@ export default function PremiumHero() {
             {/* Cinematic Background */}
             <motion.div style={{ y }} className="absolute inset-0 z-0">
                 <Image
-                    src="/la_skyline_premium_1772278731106.png"
-                    alt="Los Angeles Skyline"
+                    src="/images/team.jpg"
+                    alt="Expert Team"
                     fill
-                    className="object-cover brightness-[0.3] contrast-[1.2] scale-[1.05]"
+                    className="object-cover object-top brightness-[0.3] contrast-[1.2] scale-[1.05]"
                     priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030712]/40 to-[#030712]" />

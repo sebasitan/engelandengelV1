@@ -93,32 +93,47 @@ const teamMembers = [
 
 export default function TeamPage() {
   return (
-    <main className="bg-[#0f3574] min-h-screen text-white">
+    <main className="bg-[#0a1128] min-h-screen text-white">
       <Header />
 
-      {/* Simplified Hero Section */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      {/* Hero Section with Cinematic Background */}
+      <section className="relative min-h-[85vh] flex items-center pt-40 pb-0 overflow-hidden">
+        {/* ... existing hero code ... */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/team.jpg"
+            alt="Expert Team"
+            fill
+            className="object-cover object-top opacity-80"
+            priority
+          />
+          {/* Deep Blue Overlay matching screenshot */}
+          <div className="absolute inset-0 bg-[#0A1A3C]/80" />
+
+
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        </div>
+
         <div className="container-custom relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center pt-48">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tighter">
-                <span className="text-white">Our</span> <span className="font-serif italic text-[#D4AF37] font-medium drop-shadow-sm">Team</span>
+              <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white drop-shadow-2xl">
+                Our <span className="font-serif italic text-[#D4AF37] font-medium">Team</span>
               </h1>
-              <div className="h-px w-24 bg-[#D4AF37]/30 mx-auto" />
+              <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6" />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Team Grid Section */}
-      <section className="pb-32 relative">
+      <section className="pt-8 pb-32 relative">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
@@ -127,60 +142,72 @@ export default function TeamPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.8 }}
               >
-                <div className="relative rounded-2xl md:rounded-3xl overflow-hidden bg-primary-900 border border-white/10">
-                  {/* Photo */}
-                  <Link href={`/team/${member.slug}`} className="block">
-                    <div className="relative aspect-[4/5] overflow-hidden">
+                <div className="relative group bg-[#1e3a8a] rounded-[2.5rem] overflow-hidden shadow-2xl transition-all duration-500 hover:translate-y-[-10px] border border-[#3b82f6]/20">
+                  {/* Photo container */}
+                  <Link href={`/team/${member.slug}`} className="block relative">
+                    <div className="relative aspect-[1.1/1] overflow-hidden m-4 mb-0 rounded-[1.5rem]">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover object-top"
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f3574] via-transparent to-transparent opacity-60" />
                     </div>
                   </Link>
 
-                  {/* Info */}
-                  <div className="p-6 space-y-4">
+                  {/* Info Area */}
+                  <div className="p-8 space-y-7">
                     <div>
-                      <Link href={`/team/${member.slug}`}>
-                        <h3 className="text-2xl md:text-3xl font-serif italic text-white leading-tight hover:text-[#D4AF37] transition-colors">{member.name}</h3>
-                      </Link>
-                      <p className="text-xs font-semibold text-[#D4AF37] tracking-[0.3em] uppercase mt-1">{member.credentials}</p>
+                      <h3 className="text-[2.2rem] md:text-[2.6rem] font-serif italic text-white mb-1 leading-tight">{member.name}</h3>
+                      <p className="text-[18px] font-bold text-[#D4AF37] tracking-[0.1em] uppercase">{member.credentials}</p>
                     </div>
 
-                    {/* Phone Numbers */}
-                    <div className="space-y-1.5">
-                      <a href={`tel:${member.phonePrimary.replace(/[^+\d]/g, '')}`} className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
-                        <svg className="w-4 h-4 text-[#D4AF37] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                        {member.phonePrimary}
+                    {/* Contact Rows */}
+                    <div className="space-y-3.5">
+                      {/* Phone 1 */}
+                      <a href={`tel:${member.phonePrimary.replace(/[^+\d]/g, '')}`} className="flex items-center gap-3.5 text-white/90 hover:text-white transition-colors group/link">
+                        <svg className="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        <span className="text-[0.95rem] font-medium tracking-tight whitespace-nowrap">{member.phonePrimary}</span>
                       </a>
-                      <a href={`tel:${member.phoneSecondary.replace(/[^+\d]/g, '')}`} className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
-                        <svg className="w-4 h-4 text-[#D4AF37] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                        {member.phoneSecondary}
+
+                      {/* Phone 2 */}
+                      <a href={`tel:${member.phoneSecondary.replace(/[^+\d]/g, '')}`} className="flex items-center gap-3.5 text-white/90 hover:text-white transition-colors group/link">
+                        <svg className="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        <span className="text-[0.95rem] font-medium tracking-tight whitespace-nowrap">{member.phoneSecondary}</span>
+                      </a>
+
+                      {/* Email */}
+                      <a href={`mailto:${member.email}`} className="flex items-center gap-3.5 text-white/90 hover:text-white transition-colors group/link">
+                        <svg className="w-4 h-4 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <span className="text-[0.95rem] font-medium tracking-tight whitespace-nowrap truncate">{member.email}</span>
+                      </a>
+
+                      {/* LinkedIn */}
+                      <a href={`https://linkedin.com/in/${member.username}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3.5 text-white/90 hover:text-white transition-colors group/link">
+                        <div className="w-4 h-4 bg-[#D4AF37] rounded-[1px] flex items-center justify-center">
+                          <svg className="w-3 h-3 text-[#1e3a8a]" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.989v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                          </svg>
+                        </div>
+                        <span className="text-[0.95rem] font-medium tracking-tight truncate">{member.username}</span>
                       </a>
                     </div>
-
-                    {/* Email */}
-                    <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
-                      <svg className="w-4 h-4 text-[#D4AF37] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                      {member.email}
-                    </a>
-
-                    {/* LinkedIn */}
-                    <a href={`https://www.linkedin.com/in/${member.username}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
-                      <svg className="w-4 h-4 text-[#D4AF37] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-                      {member.username}
-                    </a>
 
                     {/* Qualifications Button */}
-                    <Link href={`/team/${member.slug}#qualifications`} className="block mt-4">
-                      <Button as="span" variant="secondary" className="w-full border-[#000080] text-[#000080] hover:bg-[#000080] hover:text-white text-sm">
-                        {member.qualificationLabel}
-                      </Button>
-                    </Link>
+                    <div className="pt-2">
+                      <Link href={`/team/${member.slug}`} className="block">
+                        <Button className="w-full bg-white text-[#1e3a8a] hover:bg-white/95 text-[0.78rem] font-bold h-11 px-1 rounded-[0.5rem] shadow-lg transition-all active:scale-[0.97] whitespace-nowrap">
+                          View {member.name.split(' ')[0]}&apos;s Professional Qualifications
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -188,8 +215,6 @@ export default function TeamPage() {
           </div>
         </div>
       </section>
-
-
 
       <Footer />
     </main>

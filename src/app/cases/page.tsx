@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
@@ -90,67 +90,87 @@ const cases = [
 // ─────────────────────────────────────────────
 
 export default function CasesPage() {
+  const { scrollY } = useScroll();
+
+  // Parallax transforms
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
+
+  const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
 
   return (
     <>
       <Header />
-      <main className="bg-slate-50 min-h-screen">
+      <main className="bg-slate-50 min-h-screen overflow-hidden">
 
         {/* ══════════ CINEMATIC HERO ══════════ */}
-        <section className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden bg-[#0f3574] text-white text-center">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 animate-ken-burns"
-              style={{ backgroundImage: 'url("https://images.pexels.com/photos/159213/hall-congress-architecture-building-159213.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080")' }}
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#0A1A3C]">
+          {/* Parallax Background Decorations */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            {/* Glowing orbs */}
+            <motion.div
+              style={{ y: y2, scale }}
+              className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#D4AF37]/10 blur-[150px] rounded-full"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0f3574] via-[#0f3574]/95 to-[#0f3574]" />
-            <div className="absolute top-0 right-0 w-[1200px] h-[800px] bg-[#D4AF37]/10 blur-[200px] rounded-full -translate-y-1/2 translate-x-1/4" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
+            <motion.div
+              style={{ y: y1 }}
+              className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#3b82f6]/10 blur-[120px] rounded-full"
+            />
+
             <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
           </div>
 
-          <div className="container-custom relative z-10">
+          <div className="container-custom relative z-10 w-full">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              style={{ y: springY1, opacity }}
+              className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tighter text-white">
-                Representative <br />
-                <span className="font-serif italic text-[#D4AF37] font-medium text-[2.5rem]">Cases</span>
-              </h1>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+              >
+                <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white drop-shadow-2xl">
+                  Representative <br />
+                  <span className="font-serif italic text-[#D4AF37] font-medium">Cases</span>
+                </h1>
+                <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6" />
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* ══════════ CASE GRID ══════════ */}
-        <section className="py-32 relative bg-slate-50">
+        <section className="py-24 relative bg-slate-50">
           <div className="container-custom">
-            <div className="flex flex-col gap-10 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
               <AnimatePresence mode="popLayout">
                 {cases.map((case_, idx) => (
                   <motion.div
                     key={case_.title}
                     layout
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5, delay: idx * 0.05 }}
-                    className="group relative bg-white pb-12 transition-all duration-700 overflow-hidden"
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: (idx % 2) * 0.1 }}
+                    className="group relative bg-white p-8 md:p-10 md:pb-8 pb-8 rounded-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] border border-[#0f3574] border-t-4 hover:shadow-[0_20px_60px_-20px_rgba(15,53,116,0.15)] transition-all duration-500 flex flex-col"
                   >
-                    <div className="relative z-10 w-full mb-8">
-                      <h3 className="text-3xl font-medium text-slate-800 tracking-tight leading-tight inline">
+                    <div className="mb-8">
+                      <h3 className="text-[1.75rem] font-bold text-[#0A1A3C] tracking-tight leading-tight mb-5 group-hover:text-[#0f3574] transition-colors duration-300 relative inline-block">
                         {case_.title}
+                        <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-[#0f3574] to-transparent transition-all duration-500 group-hover:w-full" />
                       </h3>
-                      <span className="text-xl italic text-slate-500 font-light ml-2">
-                        &ndash; {case_.result}
-                      </span>
+                      <div>
+                        <span className="text-2xl md:text-3xl font-serif italic text-[#0f3574] leading-tight font-medium">
+                          {case_.result}
+                        </span>
+                      </div>
                     </div>
 
-                    <div className="w-full h-[1px] bg-[#0f3574] mb-8" />
-
-                    <div className="relative z-10">
-                      <p className="text-base text-slate-600 font-light leading-relaxed">
+                    <div className="flex-grow">
+                      <p className="text-slate-600 font-light leading-relaxed text-[1.1rem]">
                         {case_.description}
                       </p>
                     </div>

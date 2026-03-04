@@ -93,10 +93,10 @@ export default function HeroV2() {
             {/* Cinematic Background Layer */}
             <motion.div style={{ y, scale, opacity }} className="absolute inset-0 z-0">
                 <Image
-                    src="https://images.pexels.com/photos/2525903/pexels-photo-2525903.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280"
-                    alt="Los Angeles Cinematic Backdrop"
+                    src="/images/team.jpg"
+                    alt="Expert Team"
                     fill
-                    className="object-cover brightness-[0.25] contrast-[1.1]"
+                    className="object-cover object-top brightness-[0.25] contrast-[1.1] grayscale-[20%]"
                     priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1E]/90 via-transparent to-[#0A0F1E]" />

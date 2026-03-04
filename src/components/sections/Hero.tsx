@@ -162,10 +162,10 @@ export default function Hero() {
       {/* Background Image with layers of depth */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.pexels.com/photos/2525903/pexels-photo-2525903.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280"
-          alt="Los Angeles"
+          src="/images/team.jpg"
+          alt="Expert Team"
           fill
-          className="object-cover brightness-[0.2]"
+          className="object-cover brightness-[0.2] contrast-[1.1] grayscale-[20%]"
           priority
           sizes="100vw"
         />
