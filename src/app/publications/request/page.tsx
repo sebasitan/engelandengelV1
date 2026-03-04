@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, Suspense } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { useSearchParams } from 'next/navigation'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -91,6 +91,16 @@ function PublicationRequestForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  const { scrollY } = useScroll();
+
+  // Parallax transforms
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
+
+  const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
+
   useEffect(() => {
     const category = searchParams.get('category')
     if (category && publicationCategories[category as keyof typeof publicationCategories]) {
@@ -155,27 +165,39 @@ function PublicationRequestForm() {
     return (
       <main>
         <Header />
-        <section className="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden bg-[#0f3574] text-white text-center">
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-30 scale-105 animate-ken-burns"
-              style={{ backgroundImage: 'url("https://images.pexels.com/photos/159213/hall-congress-architecture-building-159213.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080")' }}
+        {/* ══════════ CINEMATIC HERO ══════════ */}
+        <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-[#0A1A3C]">
+          {/* Parallax Background Decorations */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            {/* Glowing orbs */}
+            <motion.div
+              style={{ y: y2, scale }}
+              className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#D4AF37]/10 blur-[150px] rounded-full"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0f3574] via-[#0f3574]/95 to-[#0f3574]" />
-            <div className="absolute top-0 right-0 w-[1200px] h-[800px] bg-[#D4AF37]/10 blur-[200px] rounded-full -translate-y-1/2 translate-x-1/4" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
+            <motion.div
+              style={{ y: y1 }}
+              className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#3b82f6]/10 blur-[120px] rounded-full"
+            />
+
             <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
           </div>
 
-          <div className="container-custom relative z-10">
+          <div className="container-custom relative z-10 w-full text-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              style={{ y: springY1, opacity }}
+              className="max-w-4xl mx-auto"
             >
-              <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tighter text-white">
-                Request Submitted Successfully
-              </h1>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+              >
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-white drop-shadow-2xl">
+                  Request <br />
+                  <span className="font-serif italic text-[#D4AF37] font-medium">Submitted Successfully</span>
+                </h1>
+                <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6" />
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -188,18 +210,44 @@ function PublicationRequestForm() {
     <main>
       <Header />
 
-      {/* Hero Section */}
-      <section className="pt-16 lg:pt-20 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white">
-        <div className="container-custom py-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tighter text-white">
-              Request Publications
-            </h1>
-            <p className="text-xl text-primary-100 leading-relaxed">
-              Request access to our comprehensive research publications on forensic accounting,
-              economic damages, and expert witness testimony.
-            </p>
-          </div>
+      {/* ══════════ CINEMATIC HERO ══════════ */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-[#0A1A3C]">
+        {/* Parallax Background Decorations */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          {/* Glowing orbs */}
+          <motion.div
+            style={{ y: y2, scale }}
+            className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#D4AF37]/10 blur-[150px] rounded-full"
+          />
+          <motion.div
+            style={{ y: y1 }}
+            className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#3b82f6]/10 blur-[120px] rounded-full"
+          />
+
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
+        </div>
+
+        <div className="container-custom relative z-10 w-full text-center">
+          <motion.div
+            style={{ y: springY1, opacity }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+            >
+              <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white drop-shadow-2xl">
+                Request <br />
+                <span className="font-serif italic text-[#D4AF37] font-medium">Publications</span>
+              </h1>
+              <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6" />
+              <p className="mt-8 text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto font-light">
+                Request access to our comprehensive research publications on forensic accounting,
+                economic damages, and expert witness testimony.
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
