@@ -196,30 +196,17 @@ export default function Hero() {
             </motion.h1>
 
             <motion.div
-              initial="hidden"
-              animate="visible"
-              transition={{ staggerChildren: 0.03, delayChildren: 0.8 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.8 }}
               className="flex items-center justify-center space-x-6 mb-10 max-w-2xl mx-auto"
             >
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1, delay: 0.8 }}
-                className="h-px flex-grow bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent origin-right"
-              />
-              <h2 className="text-xs md:text-sm font-bold text-primary-100 tracking-[0.6em] uppercase whitespace-nowrap flex overflow-hidden">
-                {sublineText.split('').map((char, index) => (
-                  <motion.span key={index} variants={charVariants}>
-                    {char === ' ' ? '\u00A0' : char}
-                  </motion.span>
-                ))}
+              <div className="h-px flex-grow bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+              <h2 className="text-xs md:text-sm font-bold text-primary-100 tracking-[0.6em] uppercase whitespace-nowrap">
+                {sublineText}
               </h2>
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1, delay: 0.8 }}
-                className="h-px flex-grow bg-gradient-to-l from-transparent via-[#D4AF37]/50 to-transparent origin-left"
-              />
+              <div className="h-px flex-grow bg-gradient-to-l from-transparent via-[#D4AF37]/50 to-transparent" />
             </motion.div>
           </motion.div>
 
@@ -232,57 +219,37 @@ export default function Hero() {
               variants={{
                 visible: {
                   transition: {
-                    staggerChildren: 1.0,
-                    delayChildren: 2.2
+                    staggerChildren: 0.8,
+                    delayChildren: 1.2
                   }
                 }
               }}
-              className="space-y-1 md:space-y-2 text-left inline-block"
+              className="space-y-1 md:space-y-1 text-left inline-block"
             >
               {bulletPoints.map((point, index) => (
                 <motion.li
                   key={index}
                   variants={{
-                    hidden: { opacity: 0, y: 200 },
+                    hidden: { opacity: 0, y: 60 },
                     visible: {
                       opacity: 1,
                       y: 0,
                       transition: {
-                        duration: 0.8,
-                        ease: [0.22, 1, 0.36, 1]
+                        duration: 1.0,
+                        ease: [0.16, 1, 0.3, 1]
                       }
                     }
                   }}
-                  whileHover={{ x: 15 }}
-                  className={`flex items-start md:items-center text-base md:text-lg lg:text-xl font-bold tracking-tight transition-all duration-500 group/item cursor-default ${point.isGold ? 'text-[#D4AF37]' : 'text-white'}`}
+                  className={`flex items-center text-xl font-light tracking-tight group/item cursor-default py-0.5 ${point.isGold ? 'text-[#D4AF37]' : 'text-white'}`}
                 >
-                  <motion.span
-                    variants={{
-                      hidden: { scale: 0 },
-                      visible: { scale: 1, transition: { type: 'spring', stiffness: 200 } }
-                    }}
-                    className={`mt-2 md:mt-0 w-2 h-2 md:w-3 md:h-3 rounded-full mr-8 shrink-0 transition-all duration-500 group-hover/item:scale-150 ${point.isGold ? 'bg-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.6)]' : 'bg-white shadow-[0_0_15px_rgba(255,255,255,0.6)]'}`}
-                  />
-                  <div className="relative overflow-hidden flex items-center flex-wrap drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]">
-                    <span className="relative group-hover/item:text-[#D4AF37] transition-colors duration-500 py-1">
-                      {point.text}
-                      {point.highlight && (
-                        <span className="relative inline-block text-[#D4AF37]">
-                          {point.highlight}
-                          <motion.span
-                            variants={{
-                              hidden: { width: 0 },
-                              visible: {
-                                width: '100%',
-                                transition: { delay: 0.5, duration: 0.8 }
-                              }
-                            }}
-                            className="absolute -bottom-1 left-0 h-[3px] bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.4)]"
-                          />
-                        </span>
-                      )}
+                  <span className="mr-1">
+                    {point.text}
+                  </span>
+                  {point.highlight && (
+                    <span className="text-[#D4AF37] underline decoration-1 underline-offset-4">
+                      {point.highlight}
                     </span>
-                  </div>
+                  )}
                 </motion.li>
               ))}
             </motion.ul>

@@ -3,6 +3,67 @@
 import React, { useRef } from 'react'
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useState } from 'react'
+
+function NumberTicker({ value, duration = 3 }: { value: string, duration?: number }) {
+    const [displayValue, setDisplayValue] = useState('0')
+    const numericMatch = value.match(/[\d.]+/)
+    const numericValue = numericMatch ? parseFloat(numericMatch[0]) : 0
+    const suffix = value.replace(/[\d.$+]+/, '')
+    const prefix = value.startsWith('$') ? '$' : ''
+    const hasPlus = value.includes('+')
+
+    useEffect(() => {
+        if (isNaN(numericValue)) {
+            setDisplayValue(value)
+            return
+        }
+
+        let start = 0
+        const end = numericValue
+        const totalFrames = duration * 60
+        let frame = 0
+
+        const timer = setInterval(() => {
+            frame++
+            const progress = frame / totalFrames
+            // Ease out expo for smoothness
+            const current = end * (1 - Math.pow(2, -10 * progress))
+
+            let formattedCurrent = ''
+            if (end % 1 === 0) {
+                formattedCurrent = Math.floor(current).toString()
+            } else {
+                formattedCurrent = current.toFixed(1)
+            }
+
+            const finalSuffix = hasPlus ? `+${suffix}` : suffix
+            if (prefix === '$') {
+                setDisplayValue(`${prefix}${formattedCurrent}${finalSuffix}`)
+            } else {
+                setDisplayValue(`${formattedCurrent}${finalSuffix}`)
+            }
+
+            if (frame === totalFrames) {
+                clearInterval(timer)
+                setDisplayValue(value)
+            }
+        }, 1000 / 60)
+
+        return () => clearInterval(timer)
+    }, [value, duration, numericValue, prefix, suffix, hasPlus])
+
+    return <span>{displayValue}</span>
+}
+
+const charVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.3, ease: 'easeOut' }
+    }
+}
 
 const stats = [
     { text: '30+ Year Forensic Accounting Practice' },
@@ -58,13 +119,19 @@ export default function PremiumHero() {
                         <span className="font-serif italic font-medium text-[#D4AF37] lowercase tracking-normal">Forensic Accountants</span>
                     </h1>
 
-                    <div className="flex items-center justify-center space-x-8 mb-16 max-w-2xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.8 }}
+                        className="flex items-center justify-center space-x-8 mb-16 max-w-2xl mx-auto"
+                    >
                         <div className="h-px flex-grow bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
                         <h2 className="text-xs md:text-sm font-bold text-white tracking-[0.8em] uppercase whitespace-nowrap opacity-80">
                             Let Our Numbers Do The Talking:
                         </h2>
                         <div className="h-px flex-grow bg-gradient-to-l from-transparent via-[#D4AF37]/50 to-transparent" />
-                    </div>
+                    </motion.div>
                 </motion.div>
 
                 {/* Premium Institutional List */}
@@ -76,57 +143,37 @@ export default function PremiumHero() {
                         variants={{
                             visible: {
                                 transition: {
-                                    staggerChildren: 1.0,
-                                    delayChildren: 1.8
+                                    staggerChildren: 0.8,
+                                    delayChildren: 1.2
                                 }
                             }
                         }}
-                        className="space-y-1 md:space-y-2 text-left inline-block"
+                        className="space-y-1 md:space-y-1 text-left inline-block"
                     >
                         {stats.map((stat, index) => (
                             <motion.li
                                 key={index}
                                 variants={{
-                                    hidden: { opacity: 0, y: 200 },
+                                    hidden: { opacity: 0, y: 60 },
                                     visible: {
                                         opacity: 1,
                                         y: 0,
                                         transition: {
-                                            duration: 0.8,
-                                            ease: [0.22, 1, 0.36, 1]
+                                            duration: 1.0,
+                                            ease: [0.16, 1, 0.3, 1]
                                         }
                                     }
                                 }}
-                                whileHover={{ x: 15 }}
-                                className={`flex items-start md:items-center text-base md:text-lg lg:text-xl font-bold tracking-tight transition-all duration-500 group/item cursor-default ${stat.isGold ? 'text-[#D4AF37]' : 'text-white'}`}
+                                className={`flex items-center text-xl font-light tracking-tight group/item cursor-default py-0.5 ${stat.isGold ? 'text-[#D4AF37]' : 'text-white'}`}
                             >
-                                <motion.span
-                                    variants={{
-                                        hidden: { scale: 0 },
-                                        visible: { scale: 1, transition: { type: 'spring', stiffness: 200 } }
-                                    }}
-                                    className={`mt-2 md:mt-0 w-2 h-2 md:w-3 md:h-3 rounded-full mr-6 shrink-0 transition-all duration-500 group-hover/item:scale-150 ${stat.isGold ? 'bg-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.6)]' : 'bg-white shadow-[0_0_15px_rgba(255,255,255,0.6)]'}`}
-                                />
-                                <div className="relative overflow-hidden flex items-center flex-wrap drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]">
-                                    <span className="relative group-hover/item:text-[#D4AF37] transition-colors duration-500 py-1">
-                                        {stat.text}
-                                        {stat.highlight && (
-                                            <span className="relative inline-block text-[#D4AF37]">
-                                                {stat.highlight}
-                                                <motion.span
-                                                    variants={{
-                                                        hidden: { width: 0 },
-                                                        visible: {
-                                                            width: '100%',
-                                                            transition: { delay: 0.5, duration: 0.8 }
-                                                        }
-                                                    }}
-                                                    className="absolute -bottom-1 left-0 h-[3px] bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.4)]"
-                                                />
-                                            </span>
-                                        )}
+                                <span className="mr-1">
+                                    {stat.text}
+                                </span>
+                                {stat.highlight && (
+                                    <span className="text-[#D4AF37] underline decoration-1 underline-offset-4">
+                                        {stat.highlight}
                                     </span>
-                                </div>
+                                )}
                             </motion.li>
                         ))}
                     </motion.ul>
