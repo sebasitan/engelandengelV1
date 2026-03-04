@@ -242,6 +242,7 @@ export default function Hero() {
                   }}
                   className={`flex items-center text-xl font-light tracking-tight group/item cursor-default py-0.5 ${point.isGold ? 'text-[#D4AF37]' : 'text-white'}`}
                 >
+                  <span className={`w-1.5 h-1.5 rounded-full mr-3 shrink-0 ${point.isGold ? 'bg-[#D4AF37]' : 'bg-white/40'}`} />
                   <span className="mr-1">
                     {point.text}
                   </span>

@@ -169,6 +169,7 @@ export default function HeroV2() {
                                     }}
                                     className={`flex items-center text-xl font-light tracking-tight group/item cursor-default py-0.5 ${stat.isGold ? 'text-[#D4AF37]' : 'text-white'}`}
                                 >
+                                    <span className={`w-1.5 h-1.5 rounded-full mr-3 shrink-0 ${stat.isGold ? 'bg-[#D4AF37]' : 'bg-white/40'}`} />
                                     <span className="mr-1">
                                         {stat.text}
                                     </span>
