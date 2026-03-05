@@ -91,7 +91,7 @@ export default function PremiumHero() {
             {/* Cinematic Background */}
             <motion.div style={{ y }} className="absolute inset-0 z-0">
                 <Image
-                    src="/images/team.jpg"
+                    src="/images/city.jpg"
                     alt="Expert Team"
                     fill
                     className="object-cover object-top brightness-[0.3] contrast-[1.2] scale-[1.05]"
@@ -144,7 +144,7 @@ export default function PremiumHero() {
                             visible: {
                                 transition: {
                                     staggerChildren: 0.8,
-                                    delayChildren: 1.2
+                                    delayChildren: 2.8
                                 }
                             }
                         }}

@@ -26,15 +26,15 @@ const expertiseAreas = [
 
 export default function ExpertiseGrid() {
     return (
-        <section className="relative py-24 md:py-32 bg-[#FAF9F6] overflow-hidden">
+        <section className="relative py-24 md:py-32 bg-primary-950 overflow-hidden">
             <Image
-                src="/images/areas_b7396c2f.jpg"
+                src="/images/services.png"
                 alt=""
                 fill
                 priority
-                className="absolute inset-0 object-cover object-center"
+                className="absolute inset-0 object-cover object-center opacity-35 brightness-75 contrast-110"
             />
-            <div className="absolute inset-0 bg-primary-950/35" />
+            <div className="absolute inset-0 bg-primary-900/30" />
 
             {/* Architectural Grid Background */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none"

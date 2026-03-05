@@ -162,7 +162,7 @@ export default function Hero() {
       {/* Background Image with layers of depth */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/team.jpg"
+          src="/images/city.jpg"
           alt="Expert Team"
           fill
           className="object-cover brightness-[0.2] contrast-[1.1] grayscale-[20%]"
@@ -220,7 +220,7 @@ export default function Hero() {
                 visible: {
                   transition: {
                     staggerChildren: 0.8,
-                    delayChildren: 1.2
+                    delayChildren: 2.6
                   }
                 }
               }}

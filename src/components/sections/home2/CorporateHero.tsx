@@ -80,7 +80,7 @@ export default function CorporateHero() {
             {/* High-End Corporate Background */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/team.jpg"
+                    src="/images/city.jpg"
                     alt="Expert Team"
                     fill
                     className="object-cover object-top brightness-[0.3]"
@@ -124,7 +124,7 @@ export default function CorporateHero() {
                                 visible: {
                                     transition: {
                                         staggerChildren: 0.8,
-                                        delayChildren: 1.2
+                                        delayChildren: 2.6
                                     }
                                 }
                             }}
