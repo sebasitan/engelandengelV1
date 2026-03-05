@@ -31,7 +31,7 @@ const blogPosts = {
     `,
     author: 'Brandon Engel, CPA, CFE',
     authorRole: 'Partner & Senior Forensic Accountant',
-    authorBio: 'Brandon Engel is a Certified Public Accountant and Certified Fraud Examiner with over 35 years of experience in forensic accounting and fraud investigation. As a partner at Engel & Engel LLP, Brandon has testified in hundreds of cases and helped secure substantial judgments for clients in complex litigation matters.',
+    authorBio: 'Brandon Engel is a Certified Public Accountant and Certified Fraud Examiner with over 30+ years of experience in forensic accounting and fraud investigation. As a partner at Engel & Engel LLP, Brandon has testified in hundreds of cases and helped secure substantial judgments for clients in complex litigation matters.',
     publishDate: '2024-09-11T09:00:00-08:00',
     modifiedDate: '2024-09-11T09:00:00-08:00',
     readTime: '7 min read',
@@ -60,7 +60,7 @@ const blogPosts = {
       </ul>
 
       <h3>Experience and Track Record</h3>
-      <p>Look for experts with substantial experience in cases similar to yours. A forensic accountant with 35 years of experience and hundreds of cases under their belt brings invaluable expertise to complex litigation matters.</p>
+      <p>Look for experts with substantial experience in cases similar to yours. A forensic accountant with 30+ years of experience and hundreds of cases under their belt brings invaluable expertise to complex litigation matters.</p>
 
       <h2>Key Considerations for Expert Selection</h2>
 
@@ -68,7 +68,7 @@ const blogPosts = {
     `,
     author: 'Brandon Engel, CPA, CFE',
     authorRole: 'Partner & Senior Forensic Accountant',
-    authorBio: 'Brandon Engel is a Certified Public Accountant and Certified Fraud Examiner with over 35 years of experience in forensic accounting and fraud investigation. As a partner at Engel & Engel LLP, Brandon has testified in hundreds of cases and helped secure substantial judgments for clients in complex litigation matters.',
+    authorBio: 'Brandon Engel is a Certified Public Accountant and Certified Fraud Examiner with over 30+ years of experience in forensic accounting and fraud investigation. As a partner at Engel & Engel LLP, Brandon has testified in hundreds of cases and helped secure substantial judgments for clients in complex litigation matters.',
     publishDate: '2024-07-29T09:00:00-08:00',
     modifiedDate: '2024-07-29T09:00:00-08:00',
     readTime: '6 min read',
@@ -105,7 +105,7 @@ const blogPosts = {
     `,
     author: 'Brandon Engel, CPA, CFE',
     authorRole: 'Partner & Senior Forensic Accountant',
-    authorBio: 'Brandon Engel is a Certified Public Accountant and Certified Fraud Examiner with over 35 years of experience in forensic accounting and fraud investigation. As a partner at Engel & Engel LLP, Brandon has testified in hundreds of cases and helped secure substantial judgments for clients in complex litigation matters.',
+    authorBio: 'Brandon Engel is a Certified Public Accountant and Certified Fraud Examiner with over 30+ years of experience in forensic accounting and fraud investigation. As a partner at Engel & Engel LLP, Brandon has testified in hundreds of cases and helped secure substantial judgments for clients in complex litigation matters.',
     publishDate: '2024-07-14T09:00:00-08:00',
     modifiedDate: '2024-07-14T09:00:00-08:00',
     readTime: '8 min read',
@@ -155,7 +155,7 @@ const blogPosts = {
     `,
     author: 'Brandon Engel, CPA, CFE',
     authorRole: 'Partner & Senior Forensic Accountant',
-    authorBio: 'Brandon Engel is a Certified Public Accountant and Certified Fraud Examiner with over 35 years of experience in forensic accounting and fraud investigation. As a partner at Engel & Engel LLP, Brandon has testified in hundreds of cases and helped secure substantial judgments for clients in complex litigation matters.',
+    authorBio: 'Brandon Engel is a Certified Public Accountant and Certified Fraud Examiner with over 30+ years of experience in forensic accounting and fraud investigation. As a partner at Engel & Engel LLP, Brandon has testified in hundreds of cases and helped secure substantial judgments for clients in complex litigation matters.',
     publishDate: '2024-06-24T09:00:00-08:00',
     modifiedDate: '2024-06-24T09:00:00-08:00',
     readTime: '5 min read',
@@ -494,7 +494,7 @@ export default function BlogPost({ params }: Props) {
                 <h2 className="text-3xl font-bold mb-4">Need Expert Forensic Accounting Services?</h2>
                 <p className="text-blue-100 mb-6 text-lg">
                   Contact Engel & Engel LLP for professional forensic accounting, fraud investigation,
-                  and expert witness testimony services. Over 35 years of experience with hundreds of successful cases.
+                  and expert witness testimony services. Over 30+ years of experience with hundreds of successful cases.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/contact">

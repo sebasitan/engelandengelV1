@@ -38,7 +38,7 @@ export default function PremiumIntro() {
                                     <span className="block text-[8rem] md:text-[12rem] font-serif italic mb-8 leading-none tracking-tighter">1994</span>
                                     <div className="h-px w-32 bg-[#D4AF37] mb-12" />
                                     <p className="text-white/80 text-xl font-light leading-relaxed">
-                                        With over 35 years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom.
+                                        With over 30+ years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom.
                                     </p>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@ export default function PremiumIntro() {
                                 </p>
 
                                 <p>
-                                    With over 35 years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case. Our qualifications make us the right choice for developing thoughtful strategies, investigating the particulars, and finally, delivering analysis and calculations with sound and persuasive testimony.
+                                    With over 30+ years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case. Our qualifications make us the right choice for developing thoughtful strategies, investigating the particulars, and finally, delivering analysis and calculations with sound and persuasive testimony.
                                 </p>
 
                                 <p>

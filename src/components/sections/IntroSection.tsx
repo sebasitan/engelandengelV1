@@ -34,7 +34,7 @@ export default function IntroSection() {
                   </div>
                   <div className="h-[2px] w-24 bg-gradient-to-r from-[#D4AF37] to-transparent mb-8" />
                   <p className="text-primary-100 text-xl leading-relaxed font-light max-w-xs transition-colors group-hover:text-white">
-                    With over 35 years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom.
+                    With over 30+ years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom.
                   </p>
                 </div>
               </div>
@@ -60,7 +60,7 @@ export default function IntroSection() {
               </p>
 
               <p>
-                With over 35 years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case.
+                With over 30+ years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case.
                 Our qualifications make us the right choice for developing thoughtful strategies, investigating the particulars, and finally, delivering analysis and calculations with sound and persuasive testimony.
               </p>
 

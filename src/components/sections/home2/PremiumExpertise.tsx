@@ -61,7 +61,7 @@ export default function PremiumExpertise() {
                             <p className="text-white text-xl md:text-3xl font-light leading-relaxed">
                                 Jason A. Engel, CPA, CFE, CIRA, CVA, MAFF, ABV,<br />
                                 has served as a financial and economic expert witness<br />
-                                for over 35 years and in over 500 cases.
+                                for over 30+ years and in over 500 cases.
                             </p>
                         </div>
                     </motion.div>

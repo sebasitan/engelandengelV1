@@ -31,7 +31,7 @@ export default function CorporateIntro() {
                             </p>
 
                             <p>
-                                With over 35 years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case. Our qualifications make us the right choice for developing thoughtful strategies, investigating the particulars, and finally, delivering analysis and calculations with sound and persuasive testimony.
+                                With over 30+ years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case. Our qualifications make us the right choice for developing thoughtful strategies, investigating the particulars, and finally, delivering analysis and calculations with sound and persuasive testimony.
                             </p>
 
                             <p className="font-medium text-[#0A0F1E]">
@@ -62,7 +62,7 @@ export default function CorporateIntro() {
                             <span className="text-[#D4AF37] font-bold tracking-widest uppercase text-xs mb-4 block">Firm Foundation</span>
                             <div className="text-6xl md:text-8xl font-bold mb-4">1994</div>
                             <p className="text-primary-100 text-xl font-light leading-relaxed">
-                                With over 35 years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom.
+                                With over 30+ years in the forensic accounting industry, working with attorneys and legal teams in and out of the courtroom.
                             </p>
                         </div>
                     </motion.div>

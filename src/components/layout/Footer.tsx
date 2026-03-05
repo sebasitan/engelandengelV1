@@ -53,7 +53,7 @@ export default function Footer() {
             </div>
 
             <p className="text-gray-300 mb-6 max-w-md">
-              Los Angeles' premier forensic accounting firm with 35 years of experience
+              Los Angeles' premier forensic accounting firm with 30+ years of experience
               in fraud investigation, expert witness testimony, and business valuation.
             </p>
 

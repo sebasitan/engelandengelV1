@@ -107,7 +107,7 @@ export default function AboutPage() {
                     We provide private practice law firms, as well as in-house counsel of Fortune 500 to middle-market companies, complex business litigation support, including fraud investigations, economic damages, business valuation, and a variety of other litigation matters.
                   </p>
                   <p>
-                    With over <strong>35 years in the forensic accounting industry</strong>, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case.
+                    With over <strong>30+ years in the forensic accounting industry</strong>, working with attorneys and legal teams in and out of the courtroom, Engel & Engel brings credentials, expertise, and careful attention to each and every case.
                   </p>
                 </div>
 

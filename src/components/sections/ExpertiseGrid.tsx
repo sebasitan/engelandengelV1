@@ -66,7 +66,7 @@ export default function ExpertiseGrid() {
                             <p className="text-base md:text-lg text-white font-light leading-relaxed text-center">
                                 Jason A. Engel, CPA, CFE, CIRA, CVA, MAFF, ABV,<br />
                                 has served as a financial and economic expert witness<br />
-                                for over 35 years and in over 500 cases.
+                                for over 30+ years and in over 500 cases.
                             </p>
                         </motion.div>
                     </div>

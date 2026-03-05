@@ -40,7 +40,7 @@ export default function CorporateExpertise() {
                         <p className="text-gray-600 text-lg leading-relaxed mb-12 border-l-4 border-[#D4AF37] pl-8">
                             Jason A. Engel, CPA, CFE, CIRA, CVA, MAFF, ABV,<br />
                             has served as a financial and economic expert witness<br />
-                            for over 35 years and in over 500 cases.
+                            for over 30+ years and in over 500 cases.
                         </p>
                         <div className="relative h-64 w-full rounded-sm overflow-hidden shadow-lg border border-gray-100 bg-white">
                             <Image

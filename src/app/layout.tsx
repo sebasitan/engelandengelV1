@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     default: 'Engel & Engel - Premier Forensic Accounting Firm in Los Angeles',
     template: '%s | Engel & Engel'
   },
-  description: 'Los Angeles\' premier forensic accounting firm with 35 years of experience in fraud investigation, expert witness testimony, and business valuation. Rapid response, court-proven expertise.',
+  description: 'Los Angeles\' premier forensic accounting firm with 30+ years of experience in fraud investigation, expert witness testimony, and business valuation. Rapid response, court-proven expertise.',
   keywords: [
     'forensic accountant Los Angeles',
     'fraud investigation',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://engelengel.com',
     title: 'Engel & Engel - Premier Forensic Accounting Firm in Los Angeles',
-    description: 'Los Angeles\' premier forensic accounting firm with 35 years of experience in fraud investigation, expert witness testimony, and business valuation.',
+    description: 'Los Angeles\' premier forensic accounting firm with 30+ years of experience in fraud investigation, expert witness testimony, and business valuation.',
     siteName: 'Engel & Engel',
     images: [
       {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Engel & Engel - Premier Forensic Accounting Firm in Los Angeles',
-    description: 'Los Angeles\' premier forensic accounting firm with 35 years of experience in fraud investigation, expert witness testimony, and business valuation.',
+    description: 'Los Angeles\' premier forensic accounting firm with 30+ years of experience in fraud investigation, expert witness testimony, and business valuation.',
     images: ['/images/twitter-image.jpg'],
     creator: '@engelengel',
   },

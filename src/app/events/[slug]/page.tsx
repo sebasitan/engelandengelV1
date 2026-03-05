@@ -43,7 +43,7 @@ const eventsData: { [key: string]: any } = {
       </ul>
 
       <h2>Why Meet with Engel & Engel?</h2>
-      <p>With over 35 years of experience in forensic accounting and expert witness testimony, Engel & Engel has helped attorneys secure favorable outcomes in thousands of complex litigation matters. Our experts have testified in federal and state courts across California and nationwide.</p>
+      <p>With over 30+ years of experience in forensic accounting and expert witness testimony, Engel & Engel has helped attorneys secure favorable outcomes in thousands of complex litigation matters. Our experts have testified in federal and state courts across California and nationwide.</p>
     `,
     booth: 'Booth #245',
     speakers: ['Brandon Engel, CPA, CFE', 'David Engel, CPA, CFE'],
@@ -91,7 +91,7 @@ const eventsData: { [key: string]: any } = {
       </ul>
 
       <h2>About the Speaker</h2>
-      <p>Brandon Engel, CPA, CFE is a partner at Engel & Engel LLP with over 35 years of experience in forensic accounting and expert witness testimony. He has testified in hundreds of cases involving fraud, economic damages, business valuation, and financial disputes.</p>
+      <p>Brandon Engel, CPA, CFE is a partner at Engel & Engel LLP with over 30+ years of experience in forensic accounting and expert witness testimony. He has testified in hundreds of cases involving fraud, economic damages, business valuation, and financial disputes.</p>
 
       <h2>Who Should Attend</h2>
       <p>This seminar is ideal for:</p>
