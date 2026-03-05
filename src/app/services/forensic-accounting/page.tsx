@@ -436,9 +436,9 @@ export default function ForensicAccountingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="bg-blue-50/30 rounded-2xl border border-blue-100 p-6 hover:shadow-lg hover:border-blue-200 transition-all duration-300"
+                  className="bg-white rounded-2xl border border-blue-100 p-6 hover:shadow-lg hover:border-blue-300 transition-all duration-300"
                 >
-                  <h2 className="text-base font-bold text-[#0f3574] uppercase tracking-wide mb-4 pb-3 border-b border-blue-100">
+                  <h2 className="text-base font-bold text-[#0f3574] uppercase tracking-wide mb-4 pb-2 border-b-2 border-[#0f3574] w-fit">
                     {section.title}
                   </h2>
                   {section.paragraphs.length > 0 && (
@@ -465,9 +465,9 @@ export default function ForensicAccountingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="bg-blue-50/30 rounded-2xl border border-blue-100 p-6 hover:shadow-lg hover:border-blue-200 transition-all duration-300"
+                  className="bg-white rounded-2xl border border-blue-100 p-6 hover:shadow-lg hover:border-blue-300 transition-all duration-300"
                 >
-                  <h2 className="text-base font-bold text-[#0f3574] uppercase tracking-wide mb-4 pb-3 border-b border-blue-100">
+                  <h2 className="text-base font-bold text-[#0f3574] uppercase tracking-wide mb-4 pb-2 border-b-2 border-[#0f3574] w-fit">
                     {section.title}
                   </h2>
                   {section.paragraphs.length > 0 && (
@@ -500,7 +500,7 @@ export default function ForensicAccountingPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-xl font-bold text-[#0f3574] uppercase tracking-wide mb-8 pb-4 border-b border-slate-200">
+                  <h2 className="text-xl font-bold text-[#0f3574] uppercase tracking-wide mb-8 pb-2 border-b-2 border-[#0f3574] w-fit">
                     {section.title}
                   </h2>
                   {section.items && section.items.length > 0 && (
@@ -520,72 +520,67 @@ export default function ForensicAccountingPage() {
         }
 
         {/* ══════════ CONTACT CTA ══════════ */}
-        <section className="py-24 relative bg-slate-50 overflow-hidden">
+        <section className="relative py-28 bg-[#0A1A3C] overflow-hidden">
+          {/* Glow orbs */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+          {/* Top rule */}
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+
           <div className="container-custom relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="max-w-6xl mx-auto"
+              className="max-w-5xl mx-auto"
             >
-              <div className="bg-white rounded-[2.5rem] border border-blue-100 shadow-2xl overflow-hidden flex flex-col lg:flex-row items-stretch">
-                {/* Left side: Message */}
-                <div className="flex-1 p-10 md:p-16 flex flex-col justify-center bg-white border-b lg:border-b-0 lg:border-r border-blue-50">
-                  <div className="space-y-6">
-                    <div className="inline-flex items-center gap-3 px-3 py-1 bg-blue-50 text-[#0f3574] rounded-full text-xs font-bold uppercase tracking-widest">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0f3574]" />
-                      Direct Inquiry
-                    </div>
-                    <p className="text-2xl md:text-3xl font-medium text-slate-800 leading-snug">
-                      For additional information about Engel & Engel&apos;s Forensic Accounting Services or a consultation, please contact:
-                    </p>
-                  </div>
+
+              {/* Contact Cards */}
+              <p className="text-sm md:text-base text-white/60 font-light mb-4">
+                For additional information about{' '}
+                <span className="text-white font-medium">Engel &amp; Engel&apos;s</span>{' '}
+                <span className="font-serif italic text-[#D4AF37]">Forensic Accounting Services</span>{' '}
+                or a consultation, please contact:
+              </p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Name card */}
+                <div className="flex flex-col justify-center space-y-3 p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Brandon J. Engel</h3>
+                  <p className="text-white/50 text-sm font-medium tracking-widest uppercase">CPA, CFE</p>
+                  <div className="h-px w-16 bg-[#D4AF37] mt-2" />
                 </div>
 
-                {/* Right side: Contact Details */}
-                <div className="bg-slate-50/50 p-10 md:p-16 flex flex-col justify-center min-w-[320px] lg:min-w-[450px]">
-                  <div className="space-y-8">
-                    <div className="space-y-1">
-                      <p className="text-sm font-bold text-blue-600 uppercase tracking-widest">Expert Contact</p>
-                      <h3 className="text-3xl font-bold text-[#0f3574] tracking-tight">Brandon J. Engel, CPA, CFE</h3>
+                {/* Links card */}
+                <div className="flex flex-col justify-center space-y-5 p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+                  <a href="mailto:brandon@engelandengel.com" className="group flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#0A1A3C] transition-all duration-300 shrink-0">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
                     </div>
+                    <span className="text-lg font-semibold text-white/90 group-hover:text-white border-b border-white/20 group-hover:border-[#D4AF37] pb-0.5 transition-all duration-200">
+                      brandon@engelandengel.com
+                    </span>
+                  </a>
 
-                    <div className="space-y-4 pt-6 border-t border-slate-200">
-                      <a
-                        href="mailto:brandon@engelandengel.com"
-                        className="flex items-center gap-4 group/link"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-white border border-blue-100 flex items-center justify-center text-blue-600 group-hover/link:bg-[#0f3574] group-hover/link:text-white group-hover/link:border-[#0f3574] transition-all duration-300 shadow-sm">
-                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                          </svg>
-                        </div>
-                        <span className="text-xl font-bold text-slate-700 group-hover/link:text-[#0f3574] transition-colors border-b-2 border-transparent group-hover/link:border-blue-100 pb-0.5">
-                          brandon@engelandengel.com
-                        </span>
-                      </a>
-
-                      <a
-                        href="tel:310-277-2220"
-                        className="flex items-center gap-4 group/link"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-white border border-blue-100 flex items-center justify-center text-blue-600 group-hover/link:bg-[#0f3574] group-hover/link:text-white group-hover/link:border-[#0f3574] transition-all duration-300 shadow-sm">
-                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                          </svg>
-                        </div>
-                        <span className="text-xl font-bold text-slate-700 group-hover/link:text-[#0f3574] transition-colors border-b-2 border-transparent group-hover/link:border-blue-100 pb-0.5">
-                          310-277-2220
-                        </span>
-                      </a>
+                  <a href="tel:310-277-2220" className="group flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#0A1A3C] transition-all duration-300 shrink-0">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
                     </div>
-                  </div>
+                    <span className="text-lg font-semibold text-white/90 group-hover:text-white border-b border-white/20 group-hover:border-[#D4AF37] pb-0.5 transition-all duration-200">
+                      310-277-2220
+                    </span>
+                  </a>
                 </div>
               </div>
             </motion.div>
           </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100/20 blur-[120px] rounded-full -z-10" />
+
+          {/* Bottom rule */}
+          <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
         </section>
 
         <Footer />
