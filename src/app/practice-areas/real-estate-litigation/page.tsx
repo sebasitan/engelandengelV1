@@ -1,57 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-
-// ─────────────────────────────────────────────
-// Data
-// ─────────────────────────────────────────────
-
-const sections = [
-  {
-    id: 'overview',
-    title: 'Overview',
-    paragraphs: [
-      'Real estate litigators often require the expertise of a forensic accountant when evaluating financial issues. When financial issues arise for developers, brokers, lessors, lessees, owners, buyers, sellers, and financers, Engel & Engel brings to bear significant experience in investigating and analyzing complex real estate accounting issues. Our real estate litigation experience is highlighted with an arbitration award in excess of $100 million in connection with a buy/sell dispute of a commercial shopping center. Overall, Engel & Engel has the qualifications and experience to conduct a forensic analysis that is consistent with established financial principles and able to withstand the scrutiny of the court.',
-    ],
-    subheading: '',
-    items: [],
-  },
-  {
-    id: 'services',
-    title: 'Services',
-    paragraphs: [
-      'How Engel & Engel Helps Real Estate Litigation Attorneys',
-      'When the stakes are high, Engel & Engel can serve as your expert in connection with the following:',
-    ],
-    subheading: '',
-    items: [
-      'Investigation with Ownership Issues',
-      'Investigation of Capital Contribution Issues',
-      'Analysis of Distributions',
-      'Investigation of Hidden Distributions',
-      'Analysis of Shareholder/Partnership Agreements',
-      'Analysis of Capital Accounts',
-      'Analysis of Historical Revenues and Expenses',
-      'Analysis of Loans and Loan Proceeds',
-      'Analysis of Historical Expenses and Hidden Distributions',
-      'Analysis of Operating Agreements',
-      'Analysis of Lost Profits and Damages',
-    ],
-  },
-];
-
-const stats = [
-  { value: '$100M+', label: 'Arbitration Award — Buy/Sell Dispute' },
-  { value: '30+', label: 'Years of Experience' },
-  { value: '6', label: 'Professional Certifications' },
-];
-
-// ─────────────────────────────────────────────
-// Page
-// ─────────────────────────────────────────────
 
 export default function RealEstateLitigationPage() {
   const { scrollY } = useScroll();
@@ -67,7 +19,7 @@ export default function RealEstateLitigationPage() {
   return (
     <>
       <Header />
-      <main className="bg-slate-50 min-h-screen text-slate-900">
+      <main className="bg-slate-50 min-h-screen text-slate-900 overflow-hidden">
 
         {/* ══════════ CINEMATIC HERO ══════════ */}
         <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#0A1A3C]">
@@ -106,80 +58,195 @@ export default function RealEstateLitigationPage() {
           </div>
         </section>
 
-        {/* ══════════ CONTENT BODY ══════════ */}
-        <section className="py-24 relative bg-slate-50">
+        {/* ══════════ OVERVIEW ══════════ */}
+        <section className="py-24 relative bg-white">
           <div className="container-custom">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-              {sections.map((section, idx) => (
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
                 <motion.div
-                  key={section.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  className={`group relative bg-white p-8 md:p-10 rounded-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.08)] border border-[#0f3574] border-t-4 hover:shadow-[0_20px_60px_-20px_rgba(15,53,116,0.15)] transition-all duration-500 flex flex-col ${section.id === 'overview' ? 'md:col-span-2' : ''
-                    }`}
+                  transition={{ duration: 0.8 }}
+                  className="lg:col-span-7 flex flex-col justify-center"
                 >
-                  <div className="mb-8">
-                    <h3 className="text-[1.75rem] font-bold text-[#0A1A3C] tracking-tight leading-tight mb-6 group-hover:text-[#0f3574] transition-colors duration-300 relative inline-block">
-                      {section.title}
-                      <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-[#0f3574] to-transparent transition-all duration-500 group-hover:w-full" />
-                    </h3>
-                  </div>
-
-                  <div className="space-y-6 flex-grow">
-                    {section.paragraphs.map((p, i) => (
-                      <p key={i} className="text-slate-600 font-light leading-relaxed text-[1.1rem]">
-                        {p}
-                      </p>
-                    ))}
-
-                    {section.subheading && (
-                      <p className="text-lg font-semibold text-[#0f3574] pt-2">{section.subheading}</p>
-                    )}
-
-                    {section.items && section.items.length > 0 && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 mt-4">
-                        {section.items.map((item, i) => (
-                          <div key={i} className="flex items-start gap-3 group/item">
-                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#D4AF37] flex-shrink-0 transition-transform duration-300 group-hover/item:scale-125" />
-                            <span className="text-slate-700 font-medium leading-tight">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                  <div className="space-y-8">
+                    <div className="space-y-6">
+                      <p className="text-slate-600 leading-relaxed text-xl text-slate-700 font-medium" dangerouslySetInnerHTML={{ __html: "Real estate litigators often require the expertise of a forensic accountant when evaluating financial issues. When financial issues arise for developers, brokers, lessors, lessees, owners, buyers, sellers, and financers, Engel & Engel brings to bear significant experience in investigating and analyzing complex real estate accounting issues. Our real estate litigation experience is highlighted with an arbitration award in excess of $100 million in connection with a buy/sell dispute of a commercial shopping center. Overall, Engel & Engel has the qualifications and experience to conduct a forensic analysis that is consistent with established financial principles and able to withstand the scrutiny of the court." }}></p>
+                    </div>
                   </div>
                 </motion.div>
-              ))}
-            </div>
 
-            {/* Contact Footer */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="lg:col-span-5 relative h-full min-h-[300px]"
+                >
+                  <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden shadow-2xl group">
+                    <Image
+                      src="/images/future-lost-profits.png"
+                      alt="Economic Damages"
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f3574]/40 to-transparent" />
+                  </div>
+                  {/* Decorative element */}
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#D4AF37]/10 -z-10 rounded-full blur-2xl" />
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════ SERVICES ══════════ */}
+        <section className="py-16 lg:py-24 bg-slate-50 relative overflow-hidden">
+          <div className="container-custom max-w-5xl relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-20 p-8 md:p-12 bg-[#0A1A3C] rounded-2xl text-white relative overflow-hidden group"
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-3xl border border-blue-100 p-10 md:p-16 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl group-hover:bg-white/10 transition-colors duration-700" />
-              <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div className="max-w-2xl text-center md:text-left">
-                  <h4 className="text-2xl font-bold mb-4">Professional Consultation</h4>
-                  <p className="text-slate-300 text-lg leading-relaxed">
-                    For additional information about Engel &amp; Engel&apos;s Forensic Accounting Services or a consultation, please contact:{' '}
-                    <span className="text-[#D4AF37] font-semibold text-white">Brandon J. Engel, CPA, CFE</span>
-                  </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-[#0f3574] leading-tight mb-8 pb-3 border-b-2 border-[#0f3574] w-fit"> How Engel & Engel Helps Real Estate Litigation Attorneys </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-8"> When the stakes are high, Engel & Engel can serve as your expert in connection with the following: </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <li key="Investigation with Ownership Issues" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Investigation with Ownership Issues"}</span>
+                  </li>
+                  <li key="Investigation of Capital Contribution Issues" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Investigation of Capital Contribution Issues"}</span>
+                  </li>
+                  <li key="Analysis of Distributions" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Analysis of Distributions"}</span>
+                  </li>
+                  <li key="Investigation of Hidden Distributions" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Investigation of Hidden Distributions"}</span>
+                  </li>
+                  <li key="Analysis of Shareholder/Partnership Agreements" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Analysis of Shareholder/Partnership Agreements"}</span>
+                  </li>
+                  <li key="Analysis of Capital Accounts" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Analysis of Capital Accounts"}</span>
+                  </li>
+                  <li key="Analysis of Historical Revenues and Expenses" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Analysis of Historical Revenues and Expenses"}</span>
+                  </li>
+                  <li key="Analysis of Loans and Loan Proceeds" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Analysis of Loans and Loan Proceeds"}</span>
+                  </li>
+                  <li key="Analysis of Historical Expenses and Hidden Distributions" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Analysis of Historical Expenses and Hidden Distributions"}</span>
+                  </li>
+                  <li key="Analysis of Operating Agreements" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Analysis of Operating Agreements"}</span>
+                  </li>
+                  <li key="Analysis of Lost Profits and Damages" className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-current" />
+                    </div>
+                    <span className="text-[1.05rem] font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{"Analysis of Lost Profits and Damages"}</span>
+                  </li>
+              </ul>
+            </motion.div>
+          </div>
+          {/* Subtle background element */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/30 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
+        </section>
+
+        {/* ══════════ CONTACT CTA ══════════ */}
+        <section className="relative py-28 bg-[#0A1A3C] overflow-hidden">
+          {/* Glow orbs */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+          {/* Top rule */}
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+
+          <div className="container-custom relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="max-w-5xl mx-auto"
+            >
+              <p className="text-sm md:text-base text-white/60 font-light mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
+                For additional information about{' '}
+                <span className="text-white font-medium">Engel &amp; Engel&apos;s</span>{' '}
+                <span className="font-serif italic text-[#D4AF37]">Forensic Accounting Services</span>{' '}
+                or a consultation, please contact:
+              </p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Name card */}
+                <div className="flex flex-col justify-center space-y-3 p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Brandon J. Engel</h3>
+                  <p className="text-white/50 text-sm font-medium tracking-widest uppercase">CPA, CFE</p>
+                  <div className="h-px w-16 bg-[#D4AF37] mt-2" />
                 </div>
-                <div className="flex flex-col items-center md:items-end gap-3 min-w-[300px]">
-                  <a href="mailto:brandon@engelandengel.com" className="bg-[#D4AF37] hover:bg-[#C5A028] text-[#0A1A3C] px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 w-full text-center">
-                    brandon@engelandengel.com
+
+                {/* Links card */}
+                <div className="flex flex-col justify-center space-y-5 p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+                  <a href="mailto:brandon@engelandengel.com" className="group flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#0A1A3C] transition-all duration-300 shrink-0">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <span className="text-lg font-semibold text-white/90 group-hover:text-white border-b border-white/20 group-hover:border-[#D4AF37] pb-0.5 transition-all duration-200">
+                      brandon@engelandengel.com
+                    </span>
                   </a>
-                  <a href="tel:+13102772220" className="border border-white/20 hover:border-white/50 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:bg-white/5 w-full text-center">
-                    310-277-2220
+
+                  <a href="tel:310-277-2220" className="group flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#0A1A3C] transition-all duration-300 shrink-0">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <span className="text-lg font-semibold text-white/90 group-hover:text-white border-b border-white/20 group-hover:border-[#D4AF37] pb-0.5 transition-all duration-200">
+                      310-277-2220
+                    </span>
                   </a>
                 </div>
               </div>
             </motion.div>
           </div>
+
+          {/* Bottom rule */}
+          <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
         </section>
 
         <Footer />
@@ -187,4 +254,3 @@ export default function RealEstateLitigationPage() {
     </>
   );
 }
-
