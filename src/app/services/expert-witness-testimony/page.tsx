@@ -82,19 +82,15 @@ export default function ExpertWitnessTestimonyPage() {
         <section className="py-24 relative bg-white">
           <div className="container-custom">
             <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="lg:col-span-7"
+                  className="lg:col-span-7 flex flex-col justify-center"
                 >
                   <div className="space-y-8">
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#0f3574] tracking-tight mb-8 pb-3 border-b-2 border-[#0f3574] w-fit">
-                      Service Overview
-                    </h2>
-
                     <div className="space-y-6">
                       {overviewParagraphs.map((p, i) => (
                         <p key={i} className={`text-slate-600 leading-relaxed ${i === 0 ? 'text-xl text-slate-700 font-medium' : 'text-lg'}`}>
@@ -110,9 +106,9 @@ export default function ExpertWitnessTestimonyPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="lg:col-span-5 relative"
+                  className="lg:col-span-5 relative h-full min-h-[300px]"
                 >
-                  <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl group">
+                  <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden shadow-2xl group">
                     <Image
                       src="/images/court-1.jpg"
                       alt="Expert Witness Testimony"
@@ -204,7 +200,7 @@ export default function ExpertWitnessTestimonyPage() {
               <p className="text-sm md:text-base text-white/60 font-light mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
                 For additional information about{' '}
                 <span className="text-white font-medium">Engel &amp; Engel&apos;s</span>{' '}
-                <span className="font-serif italic text-[#D4AF37]">Expert Witness Testimony</span>{' '}
+                <span className="font-serif italic text-[#D4AF37]">Forensic Accounting Services</span>{' '}
                 or a consultation, please contact:
               </p>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

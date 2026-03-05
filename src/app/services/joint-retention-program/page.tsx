@@ -120,7 +120,7 @@ export default function JointRetentionProgramPage() {
                 >
                   <div className="space-y-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-[#0f3574] tracking-tight mb-8 pb-3 border-b-2 border-[#0f3574] w-fit">
-                      Resolving Disputed Financial Issues and Achieving Settlement
+                      Engel &amp; Engel’s Joint Retention Program: Resolving Disputed Financial Issues and Achieving Settlement
                     </h2>
 
                     <div className="space-y-6">
@@ -167,19 +167,14 @@ export default function JointRetentionProgramPage() {
               transition={{ duration: 0.6 }}
               className="bg-white rounded-3xl border border-blue-100 p-10 md:p-16 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-[#0f3574] leading-tight mb-8 pb-3 border-b-2 border-[#0f3574] w-fit">
-                Benefits of Our Joint Retention Program
-              </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#0f3574] leading-tight mb-8 pb-3 border-b-2 border-[#0f3574]">
                 By employing Engel &amp; Engel&apos;s Joint Retention Program, both parties can:
-              </p>
+              </h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {benefits.map((item, i) => (
                   <li key={i} className="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
-                    <div className="mt-1 w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                    <div className="mt-1 w-8 h-8 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300 text-sm font-bold">
+                      {i + 1}
                     </div>
                     <span className="text-lg font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{item}</span>
                   </li>
@@ -210,8 +205,8 @@ export default function JointRetentionProgramPage() {
               <ul className="grid grid-cols-1 gap-4">
                 {processItems.map((item, i) => (
                   <li key={i} className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-blue-100 shadow-sm hover:shadow-md hover:border-blue-300 transition-all duration-300 group">
-                    <div className="mt-1 w-8 h-8 rounded-full bg-blue-50 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300 text-sm font-bold">
-                      {i + 1}
+                    <div className="mt-1 w-8 h-8 rounded-full bg-blue-50 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
+                      <div className="w-2.5 h-2.5 rounded-full bg-current" />
                     </div>
                     <span className="text-lg font-medium text-slate-700 leading-snug group-hover:text-[#0f3574] transition-colors">{item}</span>
                   </li>

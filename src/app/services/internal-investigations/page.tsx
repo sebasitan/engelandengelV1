@@ -109,10 +109,6 @@ export default function InternalInvestigationsPage() {
                   className="lg:col-span-7"
                 >
                   <div className="space-y-8">
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#0f3574] tracking-tight mb-8 pb-3 border-b-2 border-[#0f3574] w-fit">
-                      Service Overview
-                    </h2>
-
                     <div className="space-y-6">
                       {overviewParagraphs.map((p, i) => (
                         <p key={i} className={`text-slate-600 leading-relaxed ${i === 0 ? 'text-xl text-slate-700 font-medium' : 'text-lg'}`}>
@@ -171,9 +167,7 @@ export default function InternalInvestigationsPage() {
                   return (
                     <li key={i} className="flex items-start gap-4 p-5 bg-slate-50 rounded-2xl border border-blue-50 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
                       <div className="mt-1 w-8 h-8 rounded-full bg-blue-100 text-[#0f3574] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0f3574] group-hover:text-white transition-colors duration-300">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
+                        <div className="w-2.5 h-2.5 rounded-full bg-current" />
                       </div>
                       <div className="flex-1">
                         <span className="text-lg font-bold text-slate-800 leading-snug group-hover:text-[#0f3574] transition-colors block mb-1">
@@ -205,12 +199,9 @@ export default function InternalInvestigationsPage() {
               transition={{ duration: 0.6 }}
               className="bg-slate-50 rounded-3xl border border-blue-100 p-10 md:p-16 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-[#0f3574] leading-tight mb-8 pb-3 border-b-2 border-[#0f3574] w-fit">
-                Related Practice Areas
-              </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#0f3574] leading-tight mb-8 pb-3 border-b-2 border-[#0f3574]">
                 In connection with our Internal Investigations, Engel &amp; Engel has the expertise and experience to address complex financial issues including the following:
-              </p>
+              </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
                 {practiceAreas.map((item, i) => (
                   <div key={i} className="flex items-start md:items-center gap-3 p-3 bg-white rounded-xl border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300">
@@ -248,7 +239,7 @@ export default function InternalInvestigationsPage() {
               <p className="text-sm md:text-base text-white/60 font-light mb-4 whitespace-nowrap overflow-hidden text-ellipsis">
                 For additional information about{' '}
                 <span className="text-white font-medium">Engel &amp; Engel&apos;s</span>{' '}
-                <span className="font-serif italic text-[#D4AF37]">Internal Investigations</span>{' '}
+                <span className="font-serif italic text-[#D4AF37]">Forensic Accounting Services</span>{' '}
                 or a consultation, please contact:
               </p>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
