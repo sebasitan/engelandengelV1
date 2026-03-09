@@ -175,7 +175,7 @@ const teamMembers: TeamMember[] = [
         id: 'overview',
         title: 'Overview',
         paragraphs: [
-          'Brandon J. Engel, CPA, CFE, ABV is a forensic accountant with over 10 years of experience in over 200 forensic accounting cases and has testified as an expert witness in deposition and trial. Brandon’s forensic experience includes conducting financial investigations in connection with civil and criminal matters. Brandon has provided the following forensic accounting services to top law firms, private and public companies, non-profits, government agencies, and local police departments:',
+          'Brandon J. Engel, CPA, CFE, ABV is a forensic accountant with over 10 years of experience in over 200 forensic accounting cases and has testified as an expert witness in state court, federal court, arbitration, and deposition. Brandon’s forensic experience includes conducting financial investigations in connection with civil and criminal matters. Brandon has provided the following forensic accounting services to top law firms, private and public companies, non-profits, government agencies, and local police departments:',
           'Brandon’s experience and expertise is highlighted in his skills and ability to investigate financial records and uncover discrepancies, hidden transactions, misstatements, fraud, and misappropriations. As a Certified Fraud Examiner (CFE) and Accredited in Business Valuation (ABV), Brandon possesses specialized knowledge in investigating a variety of complex financial fraud schemes including international money laundering, embezzlement, fraudulent transfers, alter ego, and misappropriation of assets. As a highly skilled forensic investigator, Brandon also has specialized knowledge and experience in tracing funds in accordance with established legal and financial principles.',
         ],
         items: [
@@ -594,35 +594,95 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                       </div>
                     </div>
 
-                    <div className="space-y-6">
-                      {section.paragraphs.length > 0 && (
-                        <div className="relative">
-                          {idx === 0 && <span className="absolute -top-3 -left-6 text-7xl text-[#0f3574]/5 font-serif leading-none italic select-none">“</span>}
-                          <p className="text-lg text-slate-800 leading-relaxed font-normal">
-                            {section.paragraphs[0]}
-                          </p>
-                        </div>
-                      )}
+                  <div className="space-y-6">
 
-                      {section.items && (
-                        <div className={`grid grid-cols-1 ${section.id === 'education' ? '' : 'md:grid-cols-2'} gap-x-8 gap-y-3 mt-6`}>
-                          {section.items.map((item, i) => (
-                            <div key={i} className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 border border-slate-100 transition-all duration-300 hover:border-[#0f3574]/30 hover:bg-white hover:shadow-md group/item">
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-2 group-hover/item:scale-125 transition-transform" />
-                              <span className="text-sm text-slate-900 font-bold leading-snug">
-                                {item}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                    {/* FIRST PARAGRAPH */}
+                    {section.paragraphs && section.paragraphs.length > 0 && (
+                      <div className="relative">
+                        {idx === 0 && (
+                          <span className="absolute -top-3 -left-6 text-7xl text-[#0f3574]/5 font-serif leading-none italic select-none">
+                            “
+                          </span>
+                        )}
+                        <p className="text-lg text-slate-800 leading-relaxed font-normal">
+                          {section.paragraphs[0]}
+                        </p>
+                      </div>
+                    )}
 
-                      {section.paragraphs.slice(1).map((paragraph, i) => (
-                        <p key={i} className="text-base text-slate-700 leading-relaxed font-normal">
+                    {/* OVERVIEW SECTION → ITEMS AFTER FIRST PARAGRAPH */}
+                    {section.id === "overview" && section.items && (
+                      <div
+                        className={`grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 mt-6`}
+                      >
+                        {section.items.map((item, i) => (
+                          <div
+                            key={i}
+                            className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 border border-slate-100 transition-all duration-300 hover:border-[#0f3574]/30 hover:bg-white hover:shadow-md group/item"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-2 group-hover/item:scale-125 transition-transform" />
+
+                            <span className="text-sm text-slate-900 font-bold leading-snug">
+                              {item}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* SECOND PARAGRAPH ONLY FOR OVERVIEW */}
+                    {section.id === "overview" &&
+                      section.paragraphs &&
+                      section.paragraphs.length > 1 && (
+                        <p className="text-base text-slate-700 leading-relaxed font-normal">
+                          {section.paragraphs[1]}
+                        </p>
+                    )}
+                    {/* EXTRA PARAGRAPHS FOR OVERVIEW */}
+                    {section.id === "overview" &&
+                      section.paragraphs &&
+                      section.paragraphs.slice(2).map((paragraph, i) => (
+                        <p
+                          key={i}
+                          className="text-lg text-slate-800 leading-relaxed font-normal"
+                        >
                           {paragraph}
                         </p>
-                      ))}
-                    </div>
+                    ))}
+                    {/* OTHER SECTIONS → REMAINING PARAGRAPHS */}
+                    {section.id !== "overview" &&
+                      section.paragraphs &&
+                      section.paragraphs.slice(1).map((paragraph, i) => (
+                        <p
+                          key={i}
+                          className="text-lg text-slate-800 leading-relaxed font-normal"
+                        >
+                          {paragraph}
+                        </p>
+                    ))}
+
+                    {/* OTHER SECTIONS → ITEMS */}
+                    {section.id !== "overview" && section.items && (
+                      <div
+                        className={`grid grid-cols-1 ${
+                          section.id === "education" ? "" : "md:grid-cols-2"
+                        } gap-x-8 gap-y-3 mt-6`}
+                      >
+                        {section.items.map((item, i) => (
+                          <div
+                            key={i}
+                            className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 border border-slate-100 transition-all duration-300 hover:border-[#0f3574]/30 hover:bg-white hover:shadow-md group/item"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-2 group-hover/item:scale-125 transition-transform" />
+
+                            <span className="text-sm text-slate-900 font-bold leading-snug">
+                              {item}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                   </motion.section>
                 ))}
               </div>
